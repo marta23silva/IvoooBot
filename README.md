@@ -4,7 +4,8 @@
 
 
 [![](https://img.shields.io/badge/discord.js-v12.5.3-blue.svg?logo=npm)](https://github.com/discordjs)
-> Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva).
+> Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
+> ✨<a href="https://discord.com/oauth2/authorize?client_id=868053199091810304&scope=bot">Click here</a>✨ to add Ivooo to your Discord Server!
 
 ## Commands
 #### All commands start by "Ivooo";
