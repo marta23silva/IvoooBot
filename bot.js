@@ -2,15 +2,13 @@ require('dotenv').config();
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-client.login(process.env.TOKEN);
+const db = require('./database/db');
+client.login(process.env.BOT_TOKEN);
 
 client.on('ready', readyMessage);
 
 function readyMessage() {
-	console.log('GHEGAAAAAY 🖤😍🥵💞');
-	
-	// const logChannel = client.channels.cache.get(process.env.CHANNEL_ID);
-	// logChannel.send('GHEGAAAAAY 🖤😍🥵💞');
+	console.log('Hello! 🖤');
 }
 
 const commandHandler = require("./commands");
