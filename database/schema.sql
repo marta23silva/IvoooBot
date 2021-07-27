@@ -1,5 +1,10 @@
 CREATE DATABASE DiscordBotDB;
 
+CREATE TABLE Server (
+	serverId VARCHAR(100) NOT NULL PRIMARY KEY,
+	serverOwnerId VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE Playlist (
 	name VARCHAR(100) NOT NULL PRIMARY KEY
 );
@@ -9,5 +14,5 @@ CREATE TABLE Songs (
 	artist VARCHAR(100) NOT NULL,
 	playlistName VARCHAR(100) NOT NULL,
 	FOREIGN KEY (playlistName) REFERENCES Playlist(name),
-	PRIMARY KEY(songTitle, artist, playlistName)
+	PRIMARY KEY (songTitle, artist, playlistName)
 );

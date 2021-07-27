@@ -4,6 +4,7 @@ const say = require('./src/commands/sayHello.js');
 
 // List of commands
 const commands = { ivooo, gif, say };
+const comms = ['ivooo', 'gif', 'say'];
 
 module.exports = async function (msg) {
 	console.log(msg.content);
@@ -18,6 +19,12 @@ module.exports = async function (msg) {
 		if(command == null) {								// no word => bot talk
 			command = 'ivooo';
 		}
-		commands[command](msg, tokens);
+
+		if(comms.includes(command)) {
+			console.log('command: ' + command);
+			commands[command](msg, tokens);
+		} else {
+			console.log('command: "' + command + '" does not exist.');
+		}
 	}
 }
