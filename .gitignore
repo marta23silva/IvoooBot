@@ -1,2 +1,9 @@
+# dotenv environments
 .env
+
+# Lavalink related files
+Lavalink-server/server.js
+Lavalink-server/logs/
+
+# MacOS System file
 .DS_Store

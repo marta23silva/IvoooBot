@@ -5,9 +5,9 @@
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/bot.js",
-    "start": "node ./src/bot.js",
-    "lavalink": "java -jar Lavalink.jar"
+    "dev": "nodemon ./bot.js",
+    "start": "node ./bot.js",
+    "lavalink": "java -jar Lavalink-server/Lavalink.jar"
   },
   "keywords": [
     "bot"
@@ -15,10 +15,15 @@
   "author": "Marta Silva",
   "license": "ISC",
   "dependencies": {
+    "@lavacord/discord.js": "^0.0.7",
+    "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "erela.js": "^2.3.3",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "lavalink": "^2.11.0",
     "mysql2": "^2.2.5",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "ws": "^7.5.3"
   }
 }
