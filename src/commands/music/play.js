@@ -1,34 +1,50 @@
 const discord = require('discord.js');
-const { queues } = require('../../../bot');
-const Queue = require('../../structures/Queue');
+const { client } = require('../../../bot');
 const { msToHMS } = require('../../utils');
 
 module.exports = {
 	run: async (tokens, message) => {
-		if(!tokens[0]) return message.channel.send("Ivooo no understand 🤡 Please use 'ivooo play <url/song title>'");
-		if(!message.member.voice.channel.id) return message.channel.send("Não estás no voice chat, mas queres que eu entre onde manooo?");
 
-		if(!queues[message.guild.id]) {
-			queues[message.guild.id] = new Queue(message.guild.id, message.member.voice.channel.id, message.channel);
+		let player = client.manager.players.get(message.guild.id);
+
+		if(!tokens[0] && (!player || !player.paused)) return message.channel.send("Ivooo no understand 🤡 Please use 'ivooo play <url/song title>'");
+		if(!tokens[0] && player.paused) {
+			player.pause(false);
+			return;
 		}
 
-		const [ song ] = await queues[message.guild.id].search(tokens.join(' '));
-		message.channel.send('song: ' + song);
-		if(!song) return message.channel.send('Essa música não faz parte do meu repertório.');
+		client.on("raw", (d) => client.manager.updateVoiceState(d));
 
-		const isAdded = await queues[message.guild.id].play(song);
+		const res = await client.manager.search(
+			tokens.join(' '),
+			message.author
+		);
 
-		if(isAdded) {
+		if(!player) {
+			player = client.manager.create({
+				guild: message.guild.id,
+				voiceChannel: message.member.voice.channel.id,
+				textChannel: message.channel.id,
+			});
+			player.connect();
+		}
+		
+		player.queue.add(res.tracks[0]);
+		if(player.queue.size >= 1) {
 			message.channel.send(
 				new discord.MessageEmbed()
-				.setTitle("Singing next: " + nextSong.info.title)
+				.setTitle("✨SINGING NEXT✨: " + res.tracks[0].title)
 				.addFields([
-					{ inline: true, name: "Author", value: nextSong.info.author },
-					{ inline: true, name: "Length", value: msToHMS(nextSong.info.length)},
-					{ inline: true, name: "Link", value: nextSong.info.uri }
+					{ inline: true, name: "Author", value: res.tracks[0].author },
+					{ inline: true, name: "Length", value: msToHMS(res.tracks[0].duration)},
+					{ inline: true, name: "Requester", value: res.tracks[0].requester }
 				])
 				.setColor("00ff00")
-			)
+			);
+		}
+
+		if(!player.playing && !player.paused && !player.queue.size) {
+			player.play();
 		}
 	},
 

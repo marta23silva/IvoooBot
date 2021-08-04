@@ -1,19 +1,23 @@
 const discord = require('discord.js');
-const { queues } = require('../../../bot');
-const Queue = require('../../structures/Queue');
+const { client } = require('../../../bot');
 const { msToHMS } = require('../../utils');
+
+// maybe an option to clear the queue ?
 
 module.exports = {
 	run: async (tokens, message) => {
-		if(!queues[message.guild.id]) return message.channel.send("I'm not singing right now");
 
-		const next = queues[message.guild.id].queue;
-		const text = next.map((song, index) => `${++index} ${song.info.title} - ${song.info.author} - ${msToHMS(song.info.length)}`);
+		const player = client.manager.players.get(message.guild.id);
+		if(!player) return message.channel.send("I'm not singing right now");
+		if(player.queue.size == 0) return message.channel.send('The queue is empty right now!');
+
+		const next = player.queue;
+		const text = next.map((track, index) => `${++index}) ${track.title} - ${msToHMS(track.duration)}`);
 
 		message.channel.send(
 			new discord.MessageEmbed()
-			.setTitle("✨Queue✨")
-			.setDescription(`\`\`\`\n${text.join(`\n`) || "Nothing in queue"}\n\`\`\``)
+			.setTitle("✨QUEUE✨")
+			.setDescription(`\`\`\`\n${text.join(`\n`)}\n\`\`\``)
 			.setColor('00ff00')
 		);
 	},

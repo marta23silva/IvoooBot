@@ -1,20 +1,21 @@
-const { commands } = require('../../bot');		// commands variable from bot.js
-const config = require('../../config.js');
+const { commands } = require('../../bot');
+const config = require('../../config');
 const discord = require('discord.js');
+
+var musicCommands = ['entra', 'play', 'pause', 'stop', 'skip', 'sai', 'queue']; 	// thinking about adding search command
 
 module.exports = {
 	run: message => {
 		console.log(message.author.username + ' said: ' + message.content);
 
-		const lowerCaseMessage = message.content.toLowerCase();
-		// Ignore if it is not a message for the bot
-		if(!lowerCaseMessage.startsWith(config.prefix)) return;
 		// Ignore if a message comes from a bot
 		if(message.author.bot) return;
+		// Ignore if it is not a message for Ivooo
+		if(!message.content.toLowerCase().startsWith(config.prefix)) return;
 
-		const tokens = lowerCaseMessage.slice(config.prefix.length).trim().split(/ +/g);
-		
-		let command = tokens.shift();
+		const tokens = message.content.slice(config.prefix.length).trim().split(/ +/g);
+
+		let command = tokens.shift().toLowerCase();
 		// No more commands other than "ivooo" should go to IvoooTalk
 		if(!command) { command = "ivooo"; }
 
@@ -23,9 +24,7 @@ module.exports = {
 		if(!loadedCommand) return;
 
 		// User has to be in a voice channel to use the music commands
-		// !!! THIS IF STATEMENT STILL NEEDS TO BE CHANGED !!!
-		if(!message.member.voice.channel && command == 'play') return message.channel.send("tás a ser um bocado burro, entra lá no voice chat primeiro...");
-
+		if(!message.member.voice.channel && musicCommands.includes(command)) return message.channel.send("tás a ser um bocado burro, entra lá no voice chat primeiro...");
 		loadedCommand(tokens, message);
 	},
 

@@ -2,8 +2,12 @@
 .env
 
 # Lavalink related files
-Lavalink-server/server.js
-Lavalink-server/logs/
+Lavalink.jar
+application.yml
+logs/
+
+# Dependencies
+node_modules/
 
 # MacOS System file
 .DS_Store

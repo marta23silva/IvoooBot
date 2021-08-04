@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./bot.js",
     "start": "node ./bot.js",
-    "lavalink": "java -jar Lavalink-server/Lavalink.jar"
+    "lavalink": "java -jar Lavalink.jar"
   },
   "keywords": [
     "bot"
@@ -19,6 +19,7 @@
     "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
+    "erela.js": "^2.3.3",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "lavalink": "^2.11.0",

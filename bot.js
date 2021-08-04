@@ -1,23 +1,24 @@
 require('dotenv').config();
+const config = require('./config');
+
 const discord = require('discord.js');
 const client = new discord.Client();
-const config = require('./config.js');
-const lavalink = require('@lavacord/discord.js');
+client.manager = require('./src/manager/manager')(client);
+
 const fs = require('fs').promises;
+const commands = new discord.Collection();
 let connection;
 
-const lavacordManager = new lavalink.Manager(client, config.nodes);
-
-lavacordManager.on('error', (err, node) => {
-	console.error(`An error has occurred on node ${node.id}.`, err)
-});
-
-const commands = new discord.Collection();
+(async () => {
+	connection = await require('./database/db');
+	await client.login(process.env.BOT_TOKEN);
+})();
 
 client.on('ready', readyMessage);
 
 function readyMessage() {
 	console.log('Hello! 🖤');
+	client.manager.init(client.user.id);
 }
 
 client.on('guildCreate', async (guild) => {
@@ -37,6 +38,8 @@ fs.readdir('./src/events')
 			const loaded = require('./src/events/' + file);
 
 			if(!loaded.eventName || !loaded.run) {
+				console.log('eventName: ' + loaded.eventName);
+				console.log('run: ' + loaded.run);
 				return console.error(`Missing params from ${file}`);
 			}
 
@@ -55,7 +58,7 @@ fs.readdir('./src/commands/text')
 			}
 
 			commands.set(loaded.command, loaded.run);
-			console.log(`Loaded command: ${loaded.command}`);
+			console.log(`Loaded text command: ${loaded.command}`);
 		}
 	});
 
@@ -69,20 +72,11 @@ fs.readdir('./src/commands/music')
 			}
 
 			commands.set(loaded.command, loaded.run);
-			console.log(`Loaded event: ${loaded.command}`);
+			console.log(`Loaded music command: ${loaded.command}`);
 		}
 	});
 
-(async () => {
-	connection = await require('./database/db');
-	await client.login(process.env.BOT_TOKEN);
-})();
-
 module.exports = { 
 	client, 
-	commands,
-
-	// music
-	lavacordManager,
-	queues: {}
+	commands
 }

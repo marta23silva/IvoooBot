@@ -1,14 +1,13 @@
-const discord = require('discord.js');
-const { queues } = require('../../../bot');
-const Queue = require('../../structures/Queue');
-const { msToHMS } = require('../../utils');
+const { client } = require('../../../bot');
 
 module.exports = {
-	run: async (tokens, message) => {
-		if(!message.member.voice.channel.id) return message.channel.send("You're not in a voice channel, you can't skip.");
-		if(!queues[message.guild.id]) return message.channel.send("Nothing is playing!");
+	run: (tokens, message) => {
 
-		queues[message.guild.id]._playNext();
+		if(tokens[0]) return message.channel.send('I am sorry, what?');
+
+		const player = client.manager.players.get(message.guild.id);
+		if(!player) return message.channel.send('mas eu nem estou a cantar manooo');
+		player.stop();
 	},
 
 	command: 'skip'
