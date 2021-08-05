@@ -19,6 +19,8 @@ client.on('ready', readyMessage);
 function readyMessage() {
 	console.log('Hello! 🖤');
 	client.manager.init(client.user.id);
+	// OPTIONS: PLAYING, WATCHING, STREAMING, LISTENING
+	client.user.setActivity('hyenas laughing', { type: 'LISTENING' });
 }
 
 client.on('guildCreate', async (guild) => {
@@ -73,6 +75,20 @@ fs.readdir('./src/commands/music')
 
 			commands.set(loaded.command, loaded.run);
 			console.log(`Loaded music command: ${loaded.command}`);
+		}
+	});
+
+fs.readdir('./src/commands/ivooo-voice')
+	.then(files => {
+		for(const file of files.filter(file => file.endsWith('.js'))) {
+			const loaded = require('./src/commands/ivooo-voice/' + file);
+
+			if(!loaded.command || !loaded.run) {
+				return console.error(`Missing params from ${file}`);
+			}
+
+			commands.set(loaded.command, loaded.run);
+			console.log(`Loaded ivooo-voice command: ${loaded.command}`);
 		}
 	});
 
