@@ -10,6 +10,7 @@ module.exports = {
 		if(!tokens[0] && (!player || !player.paused)) return message.channel.send("Ivooo no understand 🤡 Please use 'ivooo play <url/song title>'");
 		if(!tokens[0] && player.paused) {
 			player.pause(false);
+			message.react('▶️');
 			return;
 		}
 

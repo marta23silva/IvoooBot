@@ -17,6 +17,7 @@ module.exports = {
 		player.stop();
 		if(res.loadType === 'NO_MATCHES') {
 			player.destroy();
+			message.react('👋');
 			return;
 		}
 		player.queue.add(res.tracks[0]);
@@ -24,6 +25,7 @@ module.exports = {
 
 		client.manager.on('queueEnd', (player) => {
 			player.destroy();
+			message.react('👋');
 		});
 	},
 
