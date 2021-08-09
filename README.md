@@ -8,7 +8,7 @@
 [![](https://img.shields.io/badge/lavalink-v2.11.0-red)](https://github.com/freyacodes/Lavalink)
 [![](https://img.shields.io/badge/mysql2-v2.2.5-blue.svg?logo=npm)](https://www.npmjs.com/package/mysql2)
 > Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
-> ✨<a href="https://discord.com/oauth2/authorize?client_id=868053199091810304&scope=bot">Click here</a>✨ to add Ivooo to your Discord Server!
+> ✨<a href="https://discord.com/oauth2/authorize?client_id=868053199091810304&scope=bot">Click here</a>✨ to add Ivooo to your Discord server!
 
 ## Commands
 #### All commands start by "Ivooo";
@@ -17,12 +17,14 @@
 *   🤠  **IvoooTalk**: you only need to call it! `Ivooo` on text and `Ivooo talk` on voice.
 *   🤡  **Gif**: `gif` + search (optional)
 *   🎧  **Music**: `play`, `skip`, `stop` and all the usual commands now available!
+*	❗️	**Configurable**: update prefix with `ivooo changeprefix <new prefix>` (only available for guild owners).
 
 ## Future Updates
 
-- [x] Music 🎵 - create your own discord playlists!
-- [x] Prefix ❗️ - change Ivooo prefix on your server if you don't like the default one.
-- [x] IvoooTalk 🤠 - needs maintenance: incompatibility with music.
+- [x] Music 🎵 		-> create your own discord playlists!
+- [x] 				-> advanced search; queueing multiple tracks.
+- [x] IvoooTalk 🤠 	-> needs maintenance: incompatibility with music.
+- [x] README 📕		-> update README.md on how to clone and use Ivooo on your device.
 
 ## Author
 
@@ -30,3 +32,10 @@
 
 * [Profile](https://github.com/marta23silva "Marta Silva")
 * [Website](# "Under Construction")
+
+## Acknowledgements
+
+Very nice and useful resources that help me **a lot**: 
+* [Anson the Developer](https://www.youtube.com/c/AnsontheDeveloper/featured)
+* [The Coding Train](https://www.youtube.com/user/shiffman)
+Thank you!

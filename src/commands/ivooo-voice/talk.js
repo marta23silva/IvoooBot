@@ -14,7 +14,7 @@ module.exports = {
 		}
 
 		let voiceChannel = message.member.voice.channel;
-		if(!voiceChannel) return console.error('Please join a voice channel first.');
+		if(!voiceChannel) return message.channel.send('Please join a voice channel first.');
 
 		voiceChannel.join().then(connection => {
 			let files = fs.readdirSync('./audio');

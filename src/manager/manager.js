@@ -1,5 +1,5 @@
 const { Manager } = require('erela.js');
-const { msToHMS } = require('../utils');
+const { msToHMS } = require('../utils/time');
 const discord = require('discord.js');
 
 module.exports = function (client) {

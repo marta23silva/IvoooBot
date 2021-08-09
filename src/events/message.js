@@ -1,6 +1,6 @@
 const { commands } = require('../../bot');
-const config = require('../../config');
 const discord = require('discord.js');
+const { guildCmdPrefixes } = require('./ready');
 
 var musicCommands = ['entra', 'play', 'pause', 'stop', 'skip', 'sai', 'queue']; 	// thinking about adding search command
 
@@ -8,12 +8,14 @@ module.exports = {
 	run: message => {
 		console.log(message.author.username + ' said: ' + message.content);
 
+		const prefix = guildCmdPrefixes.get(message.guild.id);
+		if(!prefix) prefix = 'ivooo';
 		// Ignore if a message comes from a bot
 		if(message.author.bot) return;
 		// Ignore if it is not a message for Ivooo
-		if(!message.content.toLowerCase().startsWith(config.prefix)) return;
+		if(!message.content.toLowerCase().startsWith(prefix)) return;
 
-		const tokens = message.content.slice(config.prefix.length).trim().split(/ +/g);
+		const tokens = message.content.slice(prefix.length).trim().split(/ +/g);
 
 		let command = tokens.shift().toLowerCase();
 		// No more commands other than "ivooo" should go to IvoooTalk

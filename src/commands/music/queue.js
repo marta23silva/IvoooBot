@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 const { client } = require('../../../bot');
-const { msToHMS } = require('../../utils');
+const { msToHMS } = require('../../utils/time');
 
 // maybe an option to clear the queue ?
 

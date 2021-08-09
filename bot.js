@@ -7,34 +7,12 @@ client.manager = require('./src/manager/manager')(client);
 
 const fs = require('fs').promises;
 const commands = new discord.Collection();
-let connection;
 
 (async () => {
-	connection = await require('./database/db');
 	await client.login(process.env.BOT_TOKEN);
 })();
 
-client.on('ready', readyMessage);
-
-function readyMessage() {
-	console.log('Hello! 🖤');
-	client.manager.init(client.user.id);
-	// OPTIONS: PLAYING, WATCHING, STREAMING, LISTENING
-	client.user.setActivity('hyenas laughing', { type: 'LISTENING' });
-}
-
-client.on('guildCreate', async (guild) => {
-	try {
-		console.log(connection);
-		await connection.query(
-			`INSERT INTO Server VALUES('${guild.id}', '${guild.ownerID}')`
-		);
-	} catch(err) {
-		console.error(`Error inserting server into database:`, err);
-	}
-});
-
-fs.readdir('./src/events')
+fs.readdir('./src/events/')
 	.then(files => {
 		for(const file of files.filter(file => file.endsWith('.js'))) {
 			const loaded = require('./src/events/' + file);
@@ -89,6 +67,20 @@ fs.readdir('./src/commands/ivooo-voice')
 
 			commands.set(loaded.command, loaded.run);
 			console.log(`Loaded ivooo-voice command: ${loaded.command}`);
+		}
+	});
+
+fs.readdir('./src/commands/configurable')
+	.then(files => {
+		for(const file of files.filter(file => file.endsWith('.js'))) {
+			const loaded = require('./src/commands/configurable/' + file);
+
+			if(!loaded.command || !loaded.run) {
+				return console.error(`Missing params from ${file}`);
+			}
+
+			commands.set(loaded.command, loaded.run);
+			console.log(`Loaded configurable command: ${loaded.command}`);
 		}
 	});
 

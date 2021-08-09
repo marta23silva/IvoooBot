@@ -1,5 +1,4 @@
 module.exports = {
-	prefix: 'ivooo',
 	nodes: [
 		{
 			'id': '1',
