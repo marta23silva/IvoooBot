@@ -12,13 +12,25 @@ CREATE TABLE GuildConfigurable(
 );
 
 CREATE TABLE Playlist (
-	name VARCHAR(100) NOT NULL PRIMARY KEY
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	guildId VARCHAR(100) NOT NULL,
+	FOREIGN KEY (guildId) REFERENCES Guild(guildId),
+	CONSTRAINT UN_Playlist UNIQUE (name, guildId)
 );
 
-CREATE TABLE Songs (
+CREATE TABLE Song (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	songTitle VARCHAR(100) NOT NULL,
 	artist VARCHAR(100) NOT NULL,
-	playlistName VARCHAR(100) NOT NULL,
-	FOREIGN KEY (playlistName) REFERENCES Playlist(name),
-	PRIMARY KEY (songTitle, artist, playlistName)
+	CONSTRAINT UN_Song UNIQUE (songTitle, artist)
+);
+
+CREATE TABLE Playlist_Songs (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	playlistId INT NOT NULL,
+	songId INT NOT NULL,
+	FOREIGN KEY (playlistId) REFERENCES Playlist(id),
+	FOREIGN KEY (songId) REFERENCES Song(id),
+	CONSTRAINT UN_PlaylistSongs UNIQUE (playlistId, songId)
 );

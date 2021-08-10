@@ -21,10 +21,10 @@
 
 ## Future Updates
 
-- [x] Music 🎵 		-> create your own discord playlists!
-- [x] 				-> advanced search; queueing multiple tracks.
-- [x] IvoooTalk 🤠 	-> needs maintenance: incompatibility with music.
-- [x] README 📕		-> update README.md on how to clone and use Ivooo on your device.
+- [x] Music 🎵 - create your own discord playlists!
+- [x] Music 🎵 - advanced search; queueing multiple tracks.
+- [x] IvoooTalk 🤠 - needs maintenance: incompatibility with music.
+- [x] README 📕 - update README.md on how to clone and use Ivooo on your device.
 
 ## Author
 
@@ -35,7 +35,8 @@
 
 ## Acknowledgements
 
-Very nice and useful resources that help me **a lot**: 
+Very nice and useful resources that help me **a whole lot**: 
 * [Anson the Developer](https://www.youtube.com/c/AnsontheDeveloper/featured)
 * [The Coding Train](https://www.youtube.com/user/shiffman)
-Thank you!
+
+<br/>Thank you!

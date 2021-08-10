@@ -84,6 +84,20 @@ fs.readdir('./src/commands/configurable')
 		}
 	});
 
+fs.readdir('./src/commands/playlists')
+	.then(files => {
+		for(const file of files.filter(file => file.endsWith('.js'))) {
+			const loaded = require('./src/commands/playlists/' + file);
+
+			if(!loaded.command || !loaded.run) {
+				return console.error(`Missing params from ${file}`);
+			}
+
+			commands.set(loaded.command, loaded.run);
+			console.log(`Loaded playlist command: ${loaded.command}`);
+		}
+	});
+
 module.exports = { 
 	client, 
 	commands

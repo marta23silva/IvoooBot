@@ -12,7 +12,9 @@ module.exports = {
 		if(player.queue.size == 0) return message.channel.send('The queue is empty right now!');
 
 		const next = player.queue;
+		console.log('next: ' + next);
 		const text = next.map((track, index) => `${++index}) ${track.title} - ${msToHMS(track.duration)}`);
+		console.log('text: ' + text);
 
 		message.channel.send(
 			new discord.MessageEmbed()
