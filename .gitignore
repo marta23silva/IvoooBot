@@ -6,6 +6,9 @@ Lavalink.jar
 application.yml
 logs/
 
+# Unfinnished code - a mess, really
+src/commands/playlists/showPlaylist.js
+
 # Dependencies
 node_modules/
 package-lock.json
