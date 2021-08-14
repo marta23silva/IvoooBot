@@ -18,13 +18,19 @@
 *   🤡  **Gif**: `gif` + search (optional)
 *   🎧  **Music**: `play`, `skip`, `stop` and all the usual commands now available!
 *	❗️	**Configurable**: update prefix with `ivooo changeprefix <new prefix>` (only available for guild owners).
+*	🎹	**Playlists**: `createplaylist`, `showplaylist`, `addto` commands.
 
 ## Future Updates
 
-- [x] Music 🎵 - create your own discord playlists!
+- [x] Music 🎵 - play your own discord playlists! Add `removeplaylist` command.
 - [x] Music 🎵 - advanced search; queueing multiple tracks.
 - [x] IvoooTalk 🤠 - needs maintenance: incompatibility with music.
 - [x] README 📕 - update README.md on how to clone and use Ivooo on your device.
+
+## Future Improvements ⚙️
+
+- [ ] Database - Make less queries.
+- [ ] Command loader - There's different code for each folder; try to load them all at once.
 
 ## Author
 
