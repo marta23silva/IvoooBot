@@ -18,11 +18,11 @@
 *   🤡  **Gif**: `gif` + search (optional)
 *   🎧  **Music**: `play`, `skip`, `stop` and all the usual commands now available!
 *	❗️	**Configurable**: update prefix with `ivooo changeprefix <new prefix>` (only available for guild owners).
-*	🎹	**Playlists**: `createplaylist`, `showplaylist`, `addto` commands.
+*	🎹	**Playlists**: `createplaylist`, `showplaylist`, `addto` commands. `play playlist <playlist name>` to add your playlist to the queue.
 
 ## Future Updates
 
-- [x] Music 🎵 - play your own discord playlists! Add `removeplaylist` command.
+- [x] Music 🎵 - Add `remove-playlist`, `song-remove` command.
 - [x] Music 🎵 - advanced search; queueing multiple tracks.
 - [x] IvoooTalk 🤠 - needs maintenance: incompatibility with music.
 - [x] README 📕 - update README.md on how to clone and use Ivooo on your device.
