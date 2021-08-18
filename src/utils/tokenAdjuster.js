@@ -18,6 +18,7 @@ module.exports = {
 		return msg.split(' ');
 	},
 
+	// not working, needs changing!
 	cutOutSpaces: (tokens) => {
 		const msg = tokens.join(' ');
 		tokens = msg.split(separator);
@@ -30,6 +31,12 @@ module.exports = {
 		if(_song.charAt(_song.length-1) === ' ' && _song.charAt(0) === ' ') _song = _song.slice(1, _song.length-1);
 		if(_artist.charAt(_artist.charAt(0) === ' ')) _artist = _artist.slice(1, _artist.length);
 
-		return {playlist: _playlist, song: _song, artist: _artist, tokenCount: tokens.length};
+		return {playlist: _playlist, song: _song, artist: _artist};
+	},
+
+	tokenCounter: (tokens) => {
+		tokens = tokens.join(' ');
+		tokens = tokens.split(separator);
+		return tokens.length;
 	}
 }

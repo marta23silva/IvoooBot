@@ -7,7 +7,6 @@ application.yml
 logs/
 
 # Unfinnished code - a mess, really
-src/commands/playlists/removePlaylist.js
 
 # Dependencies
 node_modules/

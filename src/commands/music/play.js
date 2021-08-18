@@ -2,7 +2,7 @@ const discord = require('discord.js');
 const { client } = require('../../../bot');
 const { msToHMS } = require('../../utils/time');
 const { guildCmdPrefixes } = require('../../events/ready');
-const { apostropheCheck } = require('../../utils/stringModifier');
+const { apostropheCheck } = require('../../utils/tokenAdjuster');
 let connection = require('../../../database/db');
 
 module.exports = {

@@ -1,16 +1,16 @@
 const { guildCmdPrefixes } = require('../../events/ready');
 let connection = require('../../../database/db');
-const { apostropheCheck } = require('../../utils/stringModifier');
+const { apostropheCheck } = require('../../utils/tokenAdjuster');
 
 module.exports = {
 	run: async (tokens, message) => {
 		const prefix = guildCmdPrefixes.get(message.guild.id);
 		if(!tokens[0]) return message.channel.send(`You have to name the playlist! Please use '${prefix} createplaylist <playlist name>'`);
+		if(tokens.join(' ').includes('-')) return message.channel.send(`Invalid character: - \nPlease choose another name.`)
 		
 		const og_playlist = tokens.join(' ');
 		let playlist = apostropheCheck(tokens);
 		playlist = playlist.join(' ');
-		console.log(playlist);
 
 		await connection.query(
 			`INSERT INTO Playlist(name, guildId) VALUES ('${playlist}','${message.guild.id}')`
@@ -22,5 +22,5 @@ module.exports = {
 		});
 	},
 
-	command: 'createplaylist'
+	command: 'create-playlist'
 }

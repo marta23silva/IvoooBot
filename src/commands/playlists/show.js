@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 const { guildCmdPrefixes } = require('../../events/ready');
 let connection = require('../../../database/db');
-const { apostropheCheck } = require('../../utils/stringModifier');
+const { apostropheCheck } = require('../../utils/tokenAdjuster');
 
 module.exports = {
 	run: async (tokens, message) => {
@@ -52,7 +52,6 @@ module.exports = {
 				await connection.query(
 					`SELECT * FROM Song INNER JOIN Playlist_Songs ON Song.id = Playlist_Songs.songId AND Playlist_Songs.playlistId = ${playlistIndex}`
 				).then(result => {
-					console.log(result[0]);
 					for(var i = 0; i < result[0].length; i++) {
 						const curr = {title: result[0][i].songTitle, artist: result[0][i].artist}; 
 						songInfo.push(curr);
@@ -76,5 +75,5 @@ module.exports = {
 		}
 	},
 
-	command: 'showplaylist'
+	command: 'show-playlist'
 }

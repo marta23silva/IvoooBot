@@ -1,17 +1,16 @@
 const { guildCmdPrefixes } = require('../../events/ready');
 let connection = require('../../../database/db');
-const StringModifier = require('../../utils/stringModifier');
+const adjuster = require('../../utils/tokenAdjuster');
 
 module.exports = {
 	run: async (tokens, message) => {
 		const prefix = guildCmdPrefixes.get(message.guild.id);
-		if(!tokens[0]) return message.channel.send(`You have to select a playlist! Please use '${prefix} addto <playlist name> - <song> - <artist>'.`);
+		if(!tokens[0]) return message.channel.send(`You have to select a playlist! Please use '${prefix} addto <playlist> - <song> - <artist>'.`);
 		
-		tokens.shift();	// get rid of the word 'playlist'
-		const og_msg = StringModifier.saveOriginal(tokens);
-		tokens = StringModifier.apostropheCheck(tokens);
-		const msg = StringModifier.cutOutSpaces(tokens);
-		if(msg.tokenCount !== 3) return message.channel.send(`Incorrect amount of arguments. Please use '${prefix} addto <playlist name> - <song> - <artist>'.`);
+		if(adjuster.tokenCounter(tokens) !== 3) return message.channel.send(`Incorrect amount of arguments. Please use '${prefix} addto <playlist> - <song> - <artist>'.`);
+		const og_msg = adjuster.saveOriginal(tokens);
+		tokens = adjuster.apostropheCheck(tokens);
+		const msg = adjuster.cutOutSpaces(tokens);
 
 		// Check if playlist name exists, get the id if it does.
 		let playlistIndex;
