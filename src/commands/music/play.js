@@ -74,7 +74,7 @@ module.exports = {
 
 				message.channel.send(
 					new discord.MessageEmbed()
-					.setDescription(`\`\`\`\nPlaylist added to queue!\n\`\`\``)
+					.setDescription('✅ Playlist added to queue!')
 					.setColor('00ff00')
 				);
 			}

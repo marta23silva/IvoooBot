@@ -23,5 +23,5 @@ module.exports = {
 		}
 	},
 
-	command: 'changeprefix'
+	command: 'change-prefix'
 }

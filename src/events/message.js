@@ -1,4 +1,4 @@
-const { commands } = require('../../bot');
+const { commands } = require('../utils/register');
 const discord = require('discord.js');
 const { guildCmdPrefixes } = require('./ready');
 

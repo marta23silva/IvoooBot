@@ -14,23 +14,23 @@
 #### All commands start by "Ivooo";
 
 *   👋  **Hi!**: `say hello`; Greetings on voice channel too.
-*   🤠  **IvoooTalk**: you only need to call it! `Ivooo` on text and `Ivooo talk` on voice.
+*   🤠  **IvoooTalk**: you only need to call it!
 *   🤡  **Gif**: `gif` + search (optional)
 *   🎧  **Music**: `play`, `skip`, `stop` and all the usual commands now available!
-*	❗️	**Configurable**: update prefix with `ivooo changeprefix <new prefix>` (only available for guild owners).
-*	🎹	**Playlists**: `create-playlist`, `show-playlist`, `addto` commands. `play playlist <playlist name>` to add your playlist to the queue.
+*	❗️	**Configurable**: update prefix with `ivooo change-prefix [new prefix]` (only available for guild owners).
+*	🎹	**Playlists**: `create-playlist`, `show-playlist`, `addto` commands. `play playlist [playlist name]` to add your playlist to the queue.
+*	🆘	**Help**: use the `help` command to see everything you can do with Ivooo.
 
 ## Future Updates
 
-- [x] Text 🔤 - `help` command to show a list of all commands.
 - [x] Music 🎵 - advanced search; queueing multiple tracks.
 - [x] README 📕 - update README.md on how to clone and use Ivooo on your device.
+- [x] Commands 🎮 - create aliases.
 
 ## Future Improvements ⚙️
 
 - [ ] Database - Make less queries.
-- [ ] Command loader - There's different code for each folder; try to load them all at once.
-- [ ] IvoooTalk - needs maintenance: incompatibility with music.
+- [ ] Music - Display a more pleasing `queue`.
 
 ## Author
 
