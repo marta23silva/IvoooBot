@@ -18,6 +18,7 @@ module.exports = {
 				voiceChannel: message.member.voice.channel.id,
 				textChannel: message.channel.id,
 			});
+			message.channel.send('https://tenor.com/view/boom-baby-kuzco-gif-22347025');
 			player.connect();
 		}
 

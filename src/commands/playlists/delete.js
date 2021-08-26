@@ -6,9 +6,9 @@ const adjuster = require('../../utils/tokenAdjuster');
 module.exports = {
 	run: async (tokens, message) => {
 		const prefix = guildCmdPrefixes.get(message.guild.id);
-		if(!tokens[0]) return message.channel.send(`Please use '${prefix} remove <playlist>' to remove a playlist\nOR\n'${prefix} remove from <playlist> - <song> - <artist>' to remove a song from a playlist.`);
+		if(!tokens[0]) return message.channel.send(`Please use '${prefix} delete <playlist>' to remove a playlist\nOR\n'${prefix} delete from <playlist> - <song> - <artist>' to remove a song from a playlist.`);
 
-		// remove a song
+		// delete a song from a playlist
 		if(tokens[0] === 'from') {
 
 			tokens.shift();	// get rid of the word 'from'
@@ -75,5 +75,5 @@ module.exports = {
 		}
 	},
 
-	command: 'remove'
+	command: 'delete'
 }

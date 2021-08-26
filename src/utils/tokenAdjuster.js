@@ -18,7 +18,6 @@ module.exports = {
 		return msg.split(' ');
 	},
 
-	// not working, needs changing!
 	cutOutSpaces: (tokens) => {
 		const msg = tokens.join(' ');
 		tokens = msg.split(separator);
@@ -38,5 +37,12 @@ module.exports = {
 		tokens = tokens.join(' ');
 		tokens = tokens.split(separator);
 		return tokens.length;
+	},
+
+	stringCutter: (track) => {
+		if(track.title.length > 40) {
+			track.title = track.title.substring(0, 40) + '...' + '     ';
+		}
+		return track.title;
 	}
 }

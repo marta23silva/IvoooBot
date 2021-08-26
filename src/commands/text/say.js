@@ -6,7 +6,7 @@ module.exports = {
 		} else if(keywords === 'happy birthday') {
 			message.channel.send('https://tenor.com/7Z1g.gif');
 		} else {
-			message.channel.send('https://tenor.com/NrBf.gif');
+			message.channel.send(tokens.join(' '));
 		}
 	},
 

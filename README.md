@@ -30,7 +30,7 @@
 ## Future Improvements ⚙️
 
 - [ ] Database - Make less queries.
-- [ ] Music - Display a more pleasing `queue`.
+- [ ] Message Embed - update a few of them for consistency.
 
 ## Author
 

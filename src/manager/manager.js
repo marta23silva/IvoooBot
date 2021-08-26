@@ -31,9 +31,5 @@ module.exports = function (client) {
 					.setColor("00ff00")
 			);
 		}
-	/* })
-	.on("queueEnd", (player) => {
-		client.channels.cache.get(player.textChannel).send("Adiós, falsidades.");
-		player.destroy(); */
 	});
 }

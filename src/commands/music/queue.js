@@ -1,26 +1,35 @@
 const discord = require('discord.js');
 const { client } = require('../../../bot');
 const { msToHMS } = require('../../utils/time');
-
-// maybe an option to clear the queue ?
+const { guildCmdPrefixes } = require('../../events/ready');
+const { stringCutter } = require('../../utils/tokenAdjuster');
 
 module.exports = {
 	run: async (tokens, message) => {
+		let prefix = guildCmdPrefixes.get(message.guild.id);
+		if(prefix.length > 1) prefix += ' ';
 
 		const player = client.manager.players.get(message.guild.id);
-		if(!player) return message.channel.send("I'm not singing right now");
-		if(player.queue.size == 0) return message.channel.send('The queue is empty right now!');
+		if(!player) return message.channel.send(`❗️**I'm not in a voice channel.** Type \`${prefix}entra\` to make me join one.`);
+		if(player.queue.size == 0) return message.channel.send(new discord.MessageEmbed().setDescription('❗️ The queue is empty.').setColor('00ff00'));
 
 		const next = player.queue;
-		console.log('next: ' + next);
-		const text = next.map((track, index) => `${++index}) ${track.title} - ${msToHMS(track.duration)}`);
-		console.log('text: ' + text);
+
+		let index = 0;
+		const indexes = next.map(() => `${++index}.`);
+		const titles = next.map((track) =>`${stringCutter(track)}`);
+		const duration = next.map((track) => `${msToHMS(track.duration)}`);
 
 		message.channel.send(
 			new discord.MessageEmbed()
-			.setTitle("✨QUEUE✨")
-			.setDescription(`\`\`\`\n${text.join(`\n`)}\n\`\`\``)
 			.setColor('00ff00')
+			.setTitle('Queue')
+			.setDescription('__Now Playing:__' + `\n${player.queue.current.title}` + '\n\n\n__Up Next:__')
+			.addFields(
+				{ name: '#', value: `${indexes.join(`\n`)}`, inline: true },
+				{ name: 'Song Title', value: `${titles.join(`\n`)}`, inline: true },
+				{ name: 'Length', value: `${duration.join(`\n`)}`, inline: true },
+			)
 		);
 	},
 
