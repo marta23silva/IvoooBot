@@ -1,11 +1,11 @@
-const { guildCmdPrefixes } = require('../../events/ready');
 let connection = require('../../../database/db');
+const { getPrefix } = require('../../utils/musicVerify');
 
 module.exports = {
 	run: async (tokens, message) => {
-		const prefix = guildCmdPrefixes.get(message.guild.id);
+		const prefix = getPrefix(message);
 		if(message.member.id !== message.guild.ownerID) return message.channel.send('You do not have permission to use that command.');
-		if(!tokens[0]) return message.channel.send(`My prefix is ${prefix}. Use '${prefix} changeprefix <new prefix>' to update it!`);
+		if(!tokens[0]) return message.channel.send(`My prefix is ${prefix}. Use '${prefix}changeprefix [new prefix]' to update it!`);
 		if(tokens[1]) return message.channel.send('Wrong number of arguments. My prefix needs to be of one word only.');
 		
 		const newPrefix = tokens[0];

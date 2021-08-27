@@ -1,4 +1,5 @@
 const { client } = require('../../../bot');
+const { verifyChannel } = require('../../utils/musicVerify');
 
 module.exports = {
 	run: async (tokens, message) => {
@@ -7,6 +8,7 @@ module.exports = {
 
 		const player = client.manager.players.get(message.guild.id);
 		if(!player) return message.channel.send('mas eu nem estou no voice chat manooo');
+		if(verifyChannel(message, player)) return;
 		
 		const res = await client.manager.search(
 			process.env.LOCAL_FILE_BYE,

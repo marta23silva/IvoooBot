@@ -8,7 +8,6 @@ logs/
 
 # Unfinnished code - a mess, really
 list.txt
-src/commands/music/remove.js
 
 # Dependencies
 node_modules/

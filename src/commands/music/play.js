@@ -1,17 +1,17 @@
 const discord = require('discord.js');
 const { client } = require('../../../bot');
 const { msToHMS } = require('../../utils/time');
-const { guildCmdPrefixes } = require('../../events/ready');
-const { apostropheCheck } = require('../../utils/tokenAdjuster');
+const { apostropheCheck, getPrefix } = require('../../utils/tokenAdjuster');
+const { verifyChannel } = require('../../utils/musicVerify');
 let connection = require('../../../database/db');
 
 module.exports = {
 	run: async (tokens, message) => {
 
-		const prefix = guildCmdPrefixes.get(message.guild.id);
-		let player = client.manager.players.get(message.guild.id);
-
 		client.on("raw", (d) => client.manager.updateVoiceState(d));
+		const prefix = getPrefix(message);
+
+		let player = client.manager.players.get(message.guild.id);
 		if(!player) {
 			player = client.manager.create({
 				guild: message.guild.id,
@@ -22,15 +22,16 @@ module.exports = {
 			player.connect();
 		}
 
-		if(!tokens[0] && (!player || !player.paused)) return message.channel.send(`Ivooo no understand 🤡 Please use '${prefix} play <url/song title>'`);
+		if(!tokens[0] && (!player || !player.paused)) return message.channel.send(`Ivooo no understand 🤡 Please use '${prefix}play <url/song title>'`);
 		if(!tokens[0] && player.paused) {
 			player.pause(false);
 			return message.react('▶️');
 		}
+		if(verifyChannel(message, player)) return;
 
 		// Play or add playlist to the queue
 		if(tokens[0] === 'playlist') {
-			if(!tokens[1]) return message.channel.send(`Incorrect amount of arguments. Please use '${prefix} play playlist <playlist name>'.`);
+			if(!tokens[1]) return message.channel.send(`Incorrect amount of arguments. Please use '${prefix}play playlist <playlist name>'.`);
 			tokens.splice(0, 1);	// get rid of the word 'playlist'
 			const og_playlist = tokens.join(' ');
 			tokens = apostropheCheck(tokens);

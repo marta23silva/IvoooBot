@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { guildCmdPrefixes } = require('../../events/ready');
+const { getPrefix } = require('../../utils/tokenAdjuster');
 
 const acceptedTokens = {
 	undefined(prefix) {	// help menu
@@ -37,8 +37,9 @@ const acceptedTokens = {
 			{ name: `\u200B\n\`${prefix}pause\``, value: 'Pauses the song.' },
 			{ name: `\u200B\n\`${prefix}stop\``, value: 'Stops the song and clears the queue.' },
 			{ name: `\u200B\n\`${prefix}skip\``, value: 'Skips to the next song.' },
+			{ name: `\u200B\n\`${prefix}skipto [#]\``, value: 'Skips to the specified song.'},
 			{ name: `\u200B\n\`${prefix}queue\``, value: 'Displays the queue.' },
-			{ name: `\u200B\n\`${prefix}remove [#]\``, value: 'Removes the song from the playlist.'},
+			{ name: `\u200B\n\`${prefix}remove [#]\``, value: 'Removes the specified song from the queue.'},
 			{ name: `\u200B\n\`${prefix}sai\``, value: 'Leaves the voice channel.' }
 		);
 	},
@@ -68,9 +69,8 @@ const acceptedTokens = {
 
 module.exports = {
 	run: async (tokens, message) => {
-		let prefix = guildCmdPrefixes.get(message.guild.id);
-		if(prefix.length > 1) prefix += ' ';
-
+		
+		const prefix = getPrefix(message);
 		const chooseMessage = acceptedTokens[tokens[0]];
 		if(!chooseMessage) { return message.channel.send(new MessageEmbed().setDescription('❌ Command not found.').setColor('00ff00')); }
 		

@@ -1,13 +1,16 @@
+const { guildCmdPrefixes } = require('../events/ready');
 const separator = '-';
 const apostrophe = "'";
 
 module.exports = {
+	// saves the original input in an object
 	saveOriginal: (tokens) => {
 		tokens = tokens.join(' ');
 		tokens = tokens.split(separator);
 		return {playlist: tokens[0], song: tokens[1], artist: tokens[2]};
 	},
 
+	// adds apostrophes to ones already existing so it can be put into SQL
 	apostropheCheck: (tokens) => {
 		let msg = tokens.join(' ');
 		if(msg.charAt(0) === apostrophe) msg = apostrophe + msg;
@@ -18,6 +21,7 @@ module.exports = {
 		return msg.split(' ');
 	},
 
+	// cuts out possible spaces that can happen before and after a string
 	cutOutSpaces: (tokens) => {
 		const msg = tokens.join(' ');
 		tokens = msg.split(separator);
@@ -33,16 +37,25 @@ module.exports = {
 		return {playlist: _playlist, song: _song, artist: _artist};
 	},
 
+	// returns how many tokens there are separated by -
 	tokenCounter: (tokens) => {
 		tokens = tokens.join(' ');
 		tokens = tokens.split(separator);
 		return tokens.length;
 	},
 
+	// reduces a track name too big to be displayed
 	stringCutter: (track) => {
 		if(track.title.length > 40) {
-			track.title = track.title.substring(0, 40) + '...' + '     ';
+			track.title = track.title.substring(0, 40) + '...';
 		}
 		return track.title;
+	},
+
+	// returns the prefix to be displayed on embed messages
+	getPrefix: (message) => {
+		let prefix = guildCmdPrefixes.get(message.guild.id);
+		if(prefix.length > 1) prefix += ' ';
+		return prefix;
 	}
 }
