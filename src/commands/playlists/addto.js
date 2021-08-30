@@ -1,31 +1,31 @@
-const { guildCmdPrefixes } = require('../../events/ready');
 let connection = require('../../../database/db');
 const adjuster = require('../../utils/tokenAdjuster');
+const { getPrefix } = require('../../utils/tokenAdjuster');
+const embed = require('../../utils/messageEmbed');
 
 module.exports = {
 	run: async (tokens, message) => {
-		const prefix = guildCmdPrefixes.get(message.guild.id);
-		if(!tokens[0]) return message.channel.send(`You have to select a playlist! Please use '${prefix} addto <playlist> - <song> - <artist>'.`);
+
+		const prefix = getPrefix(message);
+		if(!tokens[0] || adjuster.tokenCounter(tokens) !== 3) return message.channel.send(embed.embed_yellow_warning(`❗️ **Incorrect amount of arguments.**\nPlease use \`${prefix}addto [playlist] - [song] - [artist]\` to add a song to the playlist.`));
 		
-		if(adjuster.tokenCounter(tokens) !== 3) return message.channel.send(`Incorrect amount of arguments. Please use '${prefix} addto <playlist> - <song> - <artist>'.`);
-		const og_msg = adjuster.saveOriginal(tokens);
+		const og_msg = adjuster.cutOutSpaces(tokens);
 		tokens = adjuster.apostropheCheck(tokens);
 		const msg = adjuster.cutOutSpaces(tokens);
 
 		// Check if playlist name exists, get the id if it does.
 		let playlistIndex;
-		let playlist_exists;
 		await connection.query(
 			`SELECT id FROM Playlist WHERE name = '${msg.playlist}' AND guildId = '${message.guild.id}'`
 		).then(result => {
 			playlistIndex = result[0][0].id;
-			playlist_exists = true;
 		}).catch(err => {
-			message.channel.send(`You do not have a playlist with that name. Please create it first with '${prefix} createplaylist <playlist name>'`);
-			playlist_exists = false;
+			playlistIndex = -1;
+			message.channel.send(embed.embed_yellow_warning(`❗️ **You do not have a playlist with that name.**\nYou can create it using \`${prefix}create-playlist [playlist]\``));
 		});
 
-		if(playlist_exists) {
+		if(playlistIndex > -1) {
+
 			// Save song into database if it doesn't exist yet
 			await connection.query(
 				`INSERT INTO Song(songTitle, artist) VALUES ('${msg.song}','${msg.artist}')`
@@ -43,9 +43,9 @@ module.exports = {
 			await connection.query(
 				`INSERT INTO Playlist_Songs(playlistId, songId) VALUES ('${playlistIndex}','${songIndex}')`
 			).then(() => {
-				message.channel.send(`${og_msg.song} by ${og_msg.artist} added to ${og_msg.playlist}`);
+				message.channel.send(embed.embed_green_info(`✅ ${og_msg.song} by ${og_msg.artist} added to ${og_msg.playlist}`));
 			}).catch(err => {
-				message.channel.send('That song is already contained in that playlist, no need to add it.');
+				message.channel.send(embed.embed_red_error(`❌ The song '${og_msg.song}' is already in your '${og_msg.playlist}' playlist.`));
 			});
 		}
 	},

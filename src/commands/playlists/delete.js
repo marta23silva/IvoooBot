@@ -1,18 +1,19 @@
 const discord = require('discord.js');
-const { guildCmdPrefixes } = require('../../events/ready');
 let connection = require('../../../database/db');
 const adjuster = require('../../utils/tokenAdjuster');
+const embed = require('../../utils/messageEmbed');
 
 module.exports = {
 	run: async (tokens, message) => {
-		const prefix = guildCmdPrefixes.get(message.guild.id);
-		if(!tokens[0]) return message.channel.send(`Please use '${prefix} delete <playlist>' to remove a playlist\nOR\n'${prefix} delete from <playlist> - <song> - <artist>' to remove a song from a playlist.`);
+
+		const prefix = adjuster.getPrefix(message);
+		if(!tokens[0]) return message.channel.send(embed.embed_yellow_warning(`❗️ **Incorrect amount of arguments.**\nUse \`${prefix}delete [playlist]\` to delete a playlist \n--------------- OR ---------------\n \`${prefix}delete from [playlist] - [song] - [artist]\` to delete a song.`));
 
 		// delete a song from a playlist
 		if(tokens[0] === 'from') {
 
 			tokens.shift();	// get rid of the word 'from'
-			const og_msg = adjuster.saveOriginal(tokens);
+			const og_msg = adjuster.cutOutSpaces(tokens);
 			tokens = adjuster.apostropheCheck(tokens);
 			const msg = adjuster.cutOutSpaces(tokens);
 
@@ -24,20 +25,17 @@ module.exports = {
 				songIndex = result[0][0].idS;
 				playlistIndex = result[0][0].idP;
 			}).catch(err => {
-				console.error(err);
 				songIndex = -1;
 				playlistIndex = -1;
-				message.channel.send(`${og_msg.song} by ${og_msg.artist} does not exist on ${og_msg.playlist}.`);
+				message.channel.send(embed.embed_red_error(`❌ ${og_msg.song} by ${og_msg.artist} does not exist in ${og_msg.playlist}.`));
 			});
 
 			if(songIndex > -1 && playlistIndex > -1) {
 				await connection.query(
 					`DELETE FROM Playlist_Songs WHERE songId = ${songIndex} AND playlistId = ${playlistIndex}`
 				).then(() => {
-					message.channel.send(`${og_msg.song} by ${og_msg.artist} removed from ${og_msg.playlist}.`);
-				}).catch(err => {
-					console.error(err);
-				});
+					message.channel.send(embed.embed_green_info(`✅ ${og_msg.song} by ${og_msg.artist} was deleted from ${og_msg.playlist}.`));
+				}).catch(err => { console.error(err); });
 			}
 
 		// remove a playlist
@@ -53,24 +51,19 @@ module.exports = {
 				playlistIndex = result[0][0].id;
 			}).catch(err => {
 				playlistIndex = -1;
-				message.channel.send(`Playlist ${og_playlist} does not exist.`);
-				console.error(err);
+				message.channel.send(embed.embed_red_error(`❌ Playlist '${og_playlist}' does not exist.`));
 			});
 
 			if(playlistIndex > -1) {
 				await connection.query(
 					`DELETE FROM Playlist_Songs WHERE playlistId = ${playlistIndex}`
-				).catch(err => {
-					console.error(err);
-				});
+				).catch(err => {});
 
 				await connection.query(
 					`DELETE FROM Playlist WHERE id = ${playlistIndex}`
 				).then(() => {
-					message.channel.send(`Playlist ${og_playlist} was removed.`);
-				}).catch(err => {
-					console.error(err);
-				});
+					message.channel.send(embed.embed_green_info(`✅ Playlist '${og_playlist}' was deleted.`));
+				}).catch(err => { console.error(err); });
 			}
 		}
 	},

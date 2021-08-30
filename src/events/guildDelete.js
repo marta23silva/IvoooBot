@@ -3,17 +3,22 @@ let connection = require('../../database/db');
 
 module.exports = {
 	run: async (guild) => {
-		try {
-			// console.log(connection);
-			await connection.query(
-				`DELETE FROM Guild WHERE guildId = '${guild.id}'`
-			);
-			await connection.query(
-				`DELETE FROM GuildConfigurable WHERE guildId = '${guild.id}'`
-			);
-		} catch(err) {
-			console.error(`Error deleting guild from database:`, err);
-		}
+
+		await connection.query(
+			`DELETE FROM Guild WHERE guildId = '${guild.id}'`
+		).then(() => {
+			console.log(`Ivooo was kicked from ${guild.id}.`);
+		}).catch(err => {
+			console.error(err);
+		});
+
+		await connection.query(
+			`DELETE FROM GuildConfigurable WHERE guildId = '${guild.id}'`
+		).then(() => {
+			console.log('All guild info was deleted.');
+		}).catch(err => {
+			console.error(err);
+		});
 	},
 
 	eventName: 'guildDelete'

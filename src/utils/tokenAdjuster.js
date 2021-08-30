@@ -3,13 +3,6 @@ const separator = '-';
 const apostrophe = "'";
 
 module.exports = {
-	// saves the original input in an object
-	saveOriginal: (tokens) => {
-		tokens = tokens.join(' ');
-		tokens = tokens.split(separator);
-		return {playlist: tokens[0], song: tokens[1], artist: tokens[2]};
-	},
-
 	// adds apostrophes to ones already existing so it can be put into SQL
 	apostropheCheck: (tokens) => {
 		let msg = tokens.join(' ');

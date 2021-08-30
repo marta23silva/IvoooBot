@@ -8,6 +8,7 @@ logs/
 
 # Unfinnished code - a mess, really
 list.txt
+src/commands/owner
 
 # Dependencies
 node_modules/

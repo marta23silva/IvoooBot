@@ -8,6 +8,7 @@ module.exports = {
 		client.manager.init(client.user.id);
 		// OPTIONS: PLAYING, WATCHING, STREAMING, LISTENING
 		client.user.setActivity('hyenas laughing', { type: 'LISTENING' });
+		// client.user.setStatus('invisible')
 
 		client.guilds.cache.forEach(guild => {
 			connection.query(
