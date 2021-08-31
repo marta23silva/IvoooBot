@@ -68,5 +68,7 @@ module.exports = {
 		}
 	},
 
-	command: 'delete'
+	command: 'delete',
+
+	aliases: ['del']
 }

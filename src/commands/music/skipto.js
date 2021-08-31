@@ -29,5 +29,7 @@ module.exports = {
 		);
 	},
 
-	command: 'skipto'
+	command: 'skipto',
+
+	aliases: ['st']
 }

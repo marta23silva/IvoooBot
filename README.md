@@ -17,20 +17,21 @@
 *   🤠  **IvoooTalk**: you only need to call it!
 *   🤡  **Gif**: `gif` + search (optional)
 *   🎧  **Music**: `play`, `skip`, `stop` and all the usual commands now available!
-*	❗️	**Configurable**: update prefix with `ivooo change-prefix [new prefix]` (only available for guild owners).
+*	❗️	**Configurable**: update prefix with `change-prefix [new prefix]` (only available for guild owners).
 *	🎹	**Playlists**: `create-playlist`, `show-playlist`, `addto` commands. `play playlist [playlist name]` to add your playlist to the queue.
 *	🆘	**Help**: use the `help` command to see everything you can do with Ivooo.
 
 ## Future Updates
 
+- [ ] README 📕 - update README.md on how to clone and use Ivooo on your device.
+- [ ] Commands 🎮 - slash commands.
+<br/>What I'm currently working on:
 - [x] Music 🎵 - advanced search; queueing multiple tracks.
-- [x] README 📕 - update README.md on how to clone and use Ivooo on your device.
-- [x] Commands 🎮 - create aliases.
 
 ## Future Improvements ⚙️
 
-- [ ] Database - Make less queries.
-- [ ] Message Embed - update a few of them for consistency.
+- [ ] Database.
+- [ ] Guild owner commands to manage the channels more easily.
 
 ## Author
 
@@ -44,5 +45,6 @@
 Very nice and useful resources that help me **a whole lot**: 
 * [Anson the Developer](https://www.youtube.com/c/AnsontheDeveloper/featured)
 * [The Coding Train](https://www.youtube.com/user/shiffman)
+* [Filipe Deschamps](https://www.youtube.com/c/FilipeDeschamps)
 
 <br/>Thank you!

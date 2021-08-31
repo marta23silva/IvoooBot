@@ -31,5 +31,7 @@ module.exports = {
 		);
 	},
 
-	command: 'queue'
+	command: 'queue',
+
+	aliases: ['q']
 }

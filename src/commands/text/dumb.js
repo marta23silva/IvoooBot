@@ -3,5 +3,7 @@ module.exports = {
 		message.channel.send('https://tenor.com/bpbwu.gif');
 	},
 
-	command: 'dumb'
+	command: 'dumb',
+
+	aliases: ['burro']
 }

@@ -16,5 +16,7 @@ module.exports = {
 		}
 	},
 
-	command: 'pause'
+	command: 'pause',
+
+	aliases: []
 }

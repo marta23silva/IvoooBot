@@ -19,5 +19,7 @@ module.exports = {
 		}).catch(err => { console.error(err); });
 	},
 
-	command: 'change-prefix'
+	command: 'change-prefix',
+
+	aliases: ['edit-prefix']
 }

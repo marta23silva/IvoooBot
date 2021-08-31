@@ -30,10 +30,14 @@ async function registerCommands(client, dir) {
 		if(file.endsWith('.js')) {
 			const loaded = require(path.join(filePath, file));
 
-			if(!loaded.command || !loaded.run) { return console.error(`Missing params from ${file}`); }
+			if(!loaded.command || !loaded.run || !loaded.aliases) { return console.error(`Missing params from ${file}`); }
+
+			const { aliases } = loaded;
 			
 			commands.set(loaded.command, loaded.run);
 			console.log(`Loaded command: ${loaded.command}`);
+
+			if(aliases.length !== 0) aliases.forEach(alias => commands.set(alias, loaded.run));
 		}
 	}
 }

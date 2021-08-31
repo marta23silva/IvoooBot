@@ -16,5 +16,7 @@ module.exports = {
 		message.channel.send(json.results[index].url);
 	},
 
-	command: 'gif'
+	command: 'gif',
+
+	aliases: ['g']
 }

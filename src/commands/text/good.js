@@ -12,5 +12,7 @@ module.exports = {
 		}
 	},
 
-	command: 'good'
+	command: 'good',
+
+	aliases: []
 }

@@ -29,5 +29,7 @@ module.exports = {
 		}
 	},
 
-	command: 'entra'
+	command: 'entra',
+
+	aliases: ['join', 'summon']
 }

@@ -109,5 +109,7 @@ module.exports = {
 		}
 	},
 
-	command: 'play'
+	command: 'play',
+
+	aliases: ['p']
 }

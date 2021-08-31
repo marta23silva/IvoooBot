@@ -21,5 +21,7 @@ module.exports = {
 		});
 	},
 
-	command: 'create-playlist'
+	command: 'create-playlist',
+
+	aliases: ['playlist-create', 'cp']
 }

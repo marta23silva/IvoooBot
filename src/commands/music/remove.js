@@ -26,5 +26,7 @@ module.exports = {
 		);
 	},
 
-	command: 'remove'
+	command: 'remove',
+
+	aliases: ['rm', 'rmv']
 }

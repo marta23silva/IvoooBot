@@ -1,6 +1,6 @@
 // File to handle all the sentences Ivooo will display
 
-const replies = ["What's up?", "O que é?! 🤬", "Manooo", "Agora não... ABAKACHI TIME 😳🍍"]
+const replies = ["What's up?", "O que é?! 🤬", "Manooo", "Agora não... ABAKACHI TIME 😳🍍", "Estou a comer restos... sozinho 🥺"]
 const suzzy_replies = ["Vai já buscar o abakachi!", "Aii manooo, não me apetece nada ir trabalhar!", "`offline` ~ fui vadiar o dia inteiro...", "Agora não. Vou descansar um bocadinho.", "ESTÁS-ME A OUVIR BERNARDO?!? ... Merda da net.", "Ai manooo, este PC 😫"]
 
 module.exports =  {
@@ -15,5 +15,7 @@ module.exports =  {
 		}
 	},
 
-	command: 'ivooo'
+	command: 'ivooo',
+
+	aliases: []
 }

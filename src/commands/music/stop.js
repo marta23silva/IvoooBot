@@ -15,5 +15,7 @@ module.exports = {
 		message.react('⏹');
 	},
 
-	command: 'stop'
+	command: 'stop',
+
+	aliases: []
 }

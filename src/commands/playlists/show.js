@@ -65,5 +65,7 @@ module.exports = {
 		}
 	},
 
-	command: 'show-playlist'
+	command: 'show-playlist',
+
+	aliases: ['sp','show-playlists', 'playlist-show', 'playlists-show']
 }

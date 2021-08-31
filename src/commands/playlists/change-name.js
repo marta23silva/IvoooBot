@@ -39,5 +39,7 @@ module.exports = {
 		}
 	},
 
-	command: 'change-name'
+	command: 'change-name',
+
+	aliases: ['edit-name']
 }

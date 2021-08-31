@@ -13,5 +13,7 @@ module.exports = {
 		message.react('⏩');
 	},
 
-	command: 'skip'
+	command: 'skip',
+
+	aliases: ['s', 'next']
 }

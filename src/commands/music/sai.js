@@ -31,5 +31,7 @@ module.exports = {
 		});
 	},
 
-	command: 'sai'
+	command: 'sai',
+
+	aliases: ['disconnect', 'leave']
 }

@@ -78,5 +78,7 @@ module.exports = {
 		message.channel.send(msg);
 	},
 
-	command: 'help'
+	command: 'help',
+
+	aliases: ['h', 'socorro', 'sos']
 }
