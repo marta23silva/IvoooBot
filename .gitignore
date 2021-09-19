@@ -8,7 +8,6 @@ logs/
 
 # Unfinnished code - a mess, really
 list.txt
-src/commands/info/aliases.js
 
 # Dependencies
 node_modules/

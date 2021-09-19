@@ -12,13 +12,15 @@ module.exports = {
 		const prefix = getPrefix(message);
 
 		let player = client.manager.players.get(message.guild.id);
+		if(verifyChannel(message, player)) return;
 		if(!player) {
 			player = client.manager.create({
 				guild: message.guild.id,
 				voiceChannel: message.member.voice.channel.id,
 				textChannel: message.channel.id,
 			});
-			message.channel.send('https://tenor.com/view/boom-baby-kuzco-gif-22347025');
+			message.channel.send('https://tenor.com/view/boom-baby-kuzco-gif-22347025')
+			.then(msg => { msg.delete({ timeout: 20000}); });
 			player.connect();
 		}
 
@@ -27,7 +29,6 @@ module.exports = {
 			player.pause(false);
 			return message.react('▶️');
 		}
-		if(verifyChannel(message, player)) return;
 
 		// Play or add playlist to the queue
 		if(tokens[0] === 'playlist') {
@@ -100,6 +101,7 @@ module.exports = {
 						{ inline: true, name: "Requester", value: res.tracks[0].requester }
 					])
 					.setColor("00ff00")
+					).then(msg => { msg.delete({ timeout: 20000}); }
 				);
 			}
 

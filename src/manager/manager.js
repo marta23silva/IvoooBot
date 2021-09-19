@@ -29,7 +29,8 @@ module.exports = function (client) {
 						{ inline: true, name: "Requester", value: track.requester }
 					])
 					.setColor("00ff00")
-			);
+			).then(msg => { msg.delete({ timeout: 20000}); }
+			).catch(err => { console.error(err); });
 		}
 	});
 }
