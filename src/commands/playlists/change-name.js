@@ -4,6 +4,14 @@ const adjuster = require('../../utils/tokenAdjuster');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'change-name',
+		category: 'Playlist',
+		description: 'Changes the name of the playlist.',
+		aliases: ['edit-name'],
+		usage: 'change-name of [old name] to [new name]'
+	},
+
 	run: async (tokens, message) => {
 
 		const prefix = adjuster.getPrefix(message);
@@ -37,9 +45,5 @@ module.exports = {
 				message.channel.send(embed.embed_green_info(`✅ Playlist previously named '${og_tokens[0]}' is now '${og_tokens[1]}'!`));
 			}).catch(err => { console.error(err); });
 		}
-	},
-
-	command: 'change-name',
-
-	aliases: ['edit-name']
+	}
 }

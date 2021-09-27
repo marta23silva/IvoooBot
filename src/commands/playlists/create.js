@@ -3,6 +3,14 @@ const { apostropheCheck, getPrefix } = require('../../utils/tokenAdjuster');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'create-playlist',
+		category: 'Playlist',
+		description: 'Creates a new playlist.',
+		aliases: ['cp', 'playlist-create'],
+		usage: 'create-playlist [name]'
+	},
+
 	run: async (tokens, message) => {
 		
 		const prefix = getPrefix(message);
@@ -19,9 +27,5 @@ module.exports = {
 		}).catch(err => {
 			message.channel.send(embed.embed_red_error('❌ **Duplicated name.**\nPlease choose a new one.'));
 		});
-	},
-
-	command: 'create-playlist',
-
-	aliases: ['playlist-create', 'cp']
+	}
 }

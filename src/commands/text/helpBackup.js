@@ -39,7 +39,7 @@ const acceptedTokens = {
 			{ name: `\u200B\n\`${prefix}skip\``, value: `Skips to the next song.\n**Aliases:** \`s\`, \`next\`` },
 			{ name: `\u200B\n\`${prefix}skipto [#]\``, value: `Skips to the specified song.\n**Aliases:** \`st\``},
 			{ name: `\u200B\n\`${prefix}queue\``, value: `Displays the queue.\n**Aliases:** \`q\`` },
-			{ name: `\u200B\n\`${prefix}remove [#]\``, value: `Removes the specified song from the queue.\n**Aliases:** \`rm\`, \`rmv\``},
+			{ name: `\u200B\n\`${prefix}remove [#]\``, value: `Removes the specified song from the queue. \n**Aliases:** \`rm\`, \`rmv\``},
 			{ name: `\u200B\n\`${prefix}sai\``, value: `Leaves the voice channel.\n**Aliases:** \`disconnect\`, \`leave\`` }
 		);
 	},
@@ -69,6 +69,14 @@ const acceptedTokens = {
 }
 
 module.exports = {
+	command: {
+		name: 'help-backup',
+		category: 'Text',
+		description: 'Backup of the help command.',
+		aliases: ['hb'],
+		usage: 'help-backup'  
+	},
+
 	run: async (tokens, message) => {
 		
 		const prefix = getPrefix(message);
@@ -77,9 +85,5 @@ module.exports = {
 		
 		const msg = chooseMessage(prefix);
 		message.channel.send(msg);
-	},
-
-	command: 'help',
-
-	aliases: ['h', 'socorro', 'sos']
+	}
 }

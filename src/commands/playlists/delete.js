@@ -4,6 +4,14 @@ const adjuster = require('../../utils/tokenAdjuster');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'delete',
+		category: 'Playlist',
+		description: 'Deletes a playlist.',
+		aliases: ['del'],
+		usage: 'delete [playlist]'
+	},
+
 	run: async (tokens, message) => {
 
 		const prefix = adjuster.getPrefix(message);
@@ -66,9 +74,5 @@ module.exports = {
 				}).catch(err => { console.error(err); });
 			}
 		}
-	},
-
-	command: 'delete',
-
-	aliases: ['del']
+	}
 }

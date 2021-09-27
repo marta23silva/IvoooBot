@@ -4,6 +4,14 @@ const { msToHMS } = require('../../utils/time');
 const { stringCutter, getPrefix } = require('../../utils/tokenAdjuster');
 
 module.exports = {
+	command: {
+		name: 'queue',
+		category: 'Music',
+		description: 'Displays the queue.',
+		aliases: ['q'],
+		usage: 'queue'
+	},
+
 	run: async (tokens, message) => {
 		
 		const prefix = getPrefix(message);
@@ -29,9 +37,5 @@ module.exports = {
 				{ name: 'Length', value: `${duration.join(`\n`)}`, inline: true },
 			)
 		);
-	},
-
-	command: 'queue',
-
-	aliases: ['q']
+	}
 }

@@ -2,6 +2,14 @@ const { client } = require('../../../bot');
 const { verifyChannel } = require('../../utils/musicVerify');
 
 module.exports = {
+	command: {
+		name: 'skip',
+		category: 'Music',
+		description: 'Skips to the next song.',
+		aliases: ['s', 'next'],
+		usage: 'skip'
+	},
+
 	run: (tokens, message) => {
 
 		const player = client.manager.players.get(message.guild.id);
@@ -11,9 +19,5 @@ module.exports = {
 		
 		player.stop();
 		message.react('⏩');
-	},
-
-	command: 'skip',
-
-	aliases: ['s', 'next']
+	}
 }

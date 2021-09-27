@@ -2,6 +2,14 @@ const discord = require('discord.js');
 const { client } = require('../../../bot');
 
 module.exports = {
+	command: {
+		name: 'join',
+		category: 'Music',
+		description: 'Joins the voice channel.',
+		aliases: ['entra', 'summon'],
+		usage: 'join'
+	},
+
 	run: async (tokens, message) => {
 
 		if(tokens[0]) return message.channel.send("Entro no voice chat se quiseres, noutros sítios não...");
@@ -27,9 +35,5 @@ module.exports = {
 			player.queue.add(res.tracks[0]);
 			player.play();
 		}
-	},
-
-	command: 'entra',
-
-	aliases: ['join', 'summon']
+	}
 }

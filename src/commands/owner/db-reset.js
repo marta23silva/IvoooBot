@@ -2,6 +2,14 @@ const embed = require('../../utils/messageEmbed');
 let connection = require('../../../database/db');
 
 module.exports = {
+	command: {
+		name: 'db-reset',
+		category: 'Owner',
+		description: 'Clears the database.',
+		aliases: ['db-delete'],
+		usage: 'db-reset'
+	},
+
 	run: async (tokens, message) => {
 
 		if(message.author != process.env.OWNER_ID) return message.channel.send(embed.embed_yellow_warning(`❗️ You don't have permission to use that command.`));
@@ -41,9 +49,5 @@ module.exports = {
 			`ALTER TABLE Song AUTO_INCREMENT = 1`
 		).then(() => { console.log('AUTO_INCREMENT from Song reset to 1.') }
 		).catch(err => { console.error(err); });
-	},
-
-	command: 'db-reset',
-
-	aliases: ['db-delete']
+	}
 }

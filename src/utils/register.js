@@ -3,6 +3,7 @@ const fs = require('fs').promises;
 const discord = require('discord.js');
 
 const commands = new discord.Collection();
+const cmdList = new discord.Collection();
 
 async function registerEvents(client, dir) {
 	const filePath = path.join(__dirname, dir);
@@ -30,14 +31,16 @@ async function registerCommands(client, dir) {
 		if(file.endsWith('.js')) {
 			const loaded = require(path.join(filePath, file));
 
-			if(!loaded.command || !loaded.run || !loaded.aliases) { return console.error(`Missing params from ${file}`); }
+			if(!loaded.command || !loaded.run) { return console.error(`Missing params from ${file}`); }
 
-			const { aliases } = loaded;
+			const { aliases } = loaded.command;
 			
-			commands.set(loaded.command, loaded.run);
-			console.log(`Loaded command: ${loaded.command}`);
+			cmdList.set(loaded.command.name, loaded.command);
+			commands.set(loaded.command.name, loaded.run);
+			console.log(`Loaded command: ${loaded.command.name}`);
 
 			if(aliases.length !== 0) aliases.forEach(alias => commands.set(alias, loaded.run));
+			if(aliases.length !== 0) aliases.forEach(alias => cmdList.set(alias, loaded.command));
 		}
 	}
 }
@@ -45,5 +48,6 @@ async function registerCommands(client, dir) {
 module.exports = {
 	registerEvents,
 	registerCommands,
-	commands
+	commands,
+	cmdList
 }

@@ -1,6 +1,14 @@
 const fetch = require('node-fetch');
 
 module.exports = {
+	command: {
+		name: 'gif',
+		category: 'Text',
+		description: 'Sends a random gif or one related with the search, if specified.',
+		aliases: ['g'],
+		usage: 'gif [optional search]'
+	},
+
 	run: async (tokens, message) => {
 		let keywords;
 		if(!tokens[0]) {
@@ -14,9 +22,5 @@ module.exports = {
 		let json = await response.json();
 		let index = Math.floor(Math.random() * json.results.length);
 		message.channel.send(json.results[index].url);
-	},
-
-	command: 'gif',
-
-	aliases: ['g']
+	}
 }

@@ -4,6 +4,14 @@ const { apostropheCheck, getPrefix } = require('../../utils/tokenAdjuster');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'show-playlist',
+		category: 'Playlist',
+		description: 'Displays a list of all playlists or all the songs in the specified playlist.',
+		aliases: ['sp','show-playlists', 'playlist-show', 'playlists-show'],
+		usage: 'show-playlist [optional playlist]'
+	},
+
 	run: async (tokens, message) => {
 		
 		if(!tokens[0]) {
@@ -63,9 +71,5 @@ module.exports = {
 				}).catch(err => { console.error(err); });
 			}
 		}
-	},
-
-	command: 'show-playlist',
-
-	aliases: ['sp','show-playlists', 'playlist-show', 'playlists-show']
+	}
 }

@@ -2,6 +2,14 @@ const { client } = require('../../../bot');
 const { verifyChannel } = require('../../utils/musicVerify');
 
 module.exports = {
+	command: {
+		name: 'pause',
+		category: 'Music',
+		description: 'Pauses the song.',
+		aliases: [],
+		usage: 'pause'
+	},
+
 	run: (tokens, message) => {
 
 		if(tokens[0]) return message.channel.send('I do not understand that... yet 😌');
@@ -14,9 +22,5 @@ module.exports = {
 			player.pause(true);
 			message.react('⏸');
 		}
-	},
-
-	command: 'pause',
-
-	aliases: []
+	}
 }

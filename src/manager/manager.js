@@ -19,7 +19,7 @@ module.exports = function (client) {
 	.on("nodeConnect", node => console.log(`Node ${node.options.identifier} connected`))
 	.on("nodeError", (node, error) => console.log(`Node ${node.options.identifier} had an error: ${error.message}`))
 	.on("trackStart", (player, track) => {
-		if(track.title !== 'welcome' && track.title !== 'byebye') {
+		if(track.title !== 'welcome' && track.title !== 'byebye' && track.title !== 'VERGONHA da PROFISSION!! Meme do JACQUIN 😂💥👍') {
 			client.channels.cache.get(player.textChannel).send(
 				new discord.MessageEmbed()
 					.setTitle("✨NOW PLAYING✨: " + track.title)

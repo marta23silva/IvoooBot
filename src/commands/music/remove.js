@@ -4,6 +4,14 @@ const { getPrefix } = require('../../utils/tokenAdjuster');
 const { verifyChannel } = require('../../utils/musicVerify');
 
 module.exports = {
+	command: {
+		name: 'remove',
+		category: 'Music',
+		description: 'Removes the specified song from the queue.',
+		aliases: ['rm', 'rmv'],
+		usage: 'remove [#]'
+	},
+
 	run: (tokens, message) => {
 
 		const player = client.manager.players.get(message.guild.id);
@@ -24,9 +32,5 @@ module.exports = {
 			.setDescription(`✅ ${title} was removed from the queue!`)
 			.setColor('00ff00')
 		);
-	},
-
-	command: 'remove',
-
-	aliases: ['rm', 'rmv']
+	}
 }

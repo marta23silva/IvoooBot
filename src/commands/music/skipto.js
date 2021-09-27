@@ -4,6 +4,14 @@ const { getPrefix } = require('../../utils/tokenAdjuster');
 const { verifyChannel } = require('../../utils/musicVerify');
 
 module.exports = {
+	command: {
+		name: 'skipto',
+		category: 'Music',
+		description: 'Skips to the specified song.',
+		aliases: ['st'],
+		usage: 'skipto [#]'
+	},
+
 	run: (tokens, message) => {
 
 		const player = client.manager.players.get(message.guild.id);
@@ -27,9 +35,5 @@ module.exports = {
 			.setDescription(`✅ Skipped to ${title}!`)
 			.setColor('00ff00')
 		);
-	},
-
-	command: 'skipto',
-
-	aliases: ['st']
+	}
 }

@@ -4,6 +4,14 @@ const { guildCmdPrefixes } = require('../../events/ready');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'change-prefix',
+		category: 'Configurable',
+		description: 'Sets a new prefix for the guild (only available to the guild owner).',
+		aliases: ['edit-prefix'],
+		usage: 'change-prefix [new prefix]'
+	},
+
 	run: async (tokens, message) => {
 		const prefix = getPrefix(message);
 		if(message.member.id !== message.guild.ownerID) return message.channel.send(embed.embed_yellow_warning('❗️ You do not have permission to use that command.'));
@@ -17,9 +25,5 @@ module.exports = {
 			guildCmdPrefixes.set(message.guild.id, newPrefix);
 			message.channel.send(embed.embed_green_info(`✅ Updated guild prefix to: ${newPrefix}`));			
 		}).catch(err => { console.error(err); });
-	},
-
-	command: 'change-prefix',
-
-	aliases: ['edit-prefix']
+	}
 }

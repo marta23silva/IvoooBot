@@ -8,6 +8,8 @@ logs/
 
 # Unfinnished code - a mess, really
 list.txt
+src/commands/music/toca.js
+src/commands/text/help.js
 
 # Dependencies
 node_modules/

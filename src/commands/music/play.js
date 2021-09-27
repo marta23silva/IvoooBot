@@ -6,6 +6,14 @@ const { verifyChannel } = require('../../utils/musicVerify');
 let connection = require('../../../database/db');
 
 module.exports = {
+	command: {
+		name: 'play',
+		category: 'Music',
+		description: 'Plays the song if the queue is empty; adds it otherwise.',
+		aliases: ['p'],
+		usage: 'play [song]'
+	},
+
 	run: async (tokens, message) => {
 
 		client.on("raw", (d) => client.manager.updateVoiceState(d));
@@ -109,9 +117,5 @@ module.exports = {
 				player.play();
 			}
 		}
-	},
-
-	command: 'play',
-
-	aliases: ['p']
+	}
 }

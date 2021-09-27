@@ -3,6 +3,14 @@ const { getPrefix } = require('../../utils/tokenAdjuster');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'delete-playlists',
+		category: 'Configurable',
+		description: 'Deletes all the playlists on the guild (only available to the guild owner).',
+		aliases: ['del-playlists', 'rmv-playlists'],
+		usage: 'delete-playlists'
+	},
+
 	run: async (tokens, message) => {
 
 		const prefix = getPrefix(message);
@@ -39,9 +47,5 @@ module.exports = {
 		}
 
 		message.channel.send(embed.embed_green_info(`✅ All playlists were deleted.`));
-	},
-
-	command: 'delete-playlists',
-
-	aliases: ['del-playlists', 'rmv-playlists']
+	}
 }

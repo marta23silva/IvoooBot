@@ -4,6 +4,14 @@ const { getPrefix } = require('../../utils/tokenAdjuster');
 const embed = require('../../utils/messageEmbed');
 
 module.exports = {
+	command: {
+		name: 'addto',
+		category: 'Playlist',
+		description: 'Adds the song to the specified playlist.',
+		aliases: [],
+		usage: 'addto [playlist] - [song] - [artist]'
+	},
+
 	run: async (tokens, message) => {
 
 		const prefix = getPrefix(message);
@@ -48,9 +56,5 @@ module.exports = {
 				message.channel.send(embed.embed_red_error(`❌ The song '${og_msg.song}' is already in your '${og_msg.playlist}' playlist.`));
 			});
 		}
-	},
-
-	command: 'addto',
-
-	aliases: []
+	}
 }
