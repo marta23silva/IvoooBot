@@ -25,13 +25,15 @@
 
 - [ ] README 📕 - update README.md on how to clone and use Ivooo on your device.
 - [ ] Commands 🎮 - slash commands.
-<br/>What I'm currently working on:
-- [x] Music 🎵 - advanced search; queueing multiple tracks.
+- [ ] Music 🎵 - advanced search; queueing multiple tracks.
 
 ## Future Improvements ⚙️
 
 - [ ] Database.
 - [ ] Guild owner commands to manage the channels more easily.
+- [ ] Update Ivooo to discord.js v13.
+<br/>What I'm currently working on:
+- [x] Improved help command.
 
 ## Author
 
