@@ -7,7 +7,7 @@ module.exports = {
 		.setColor('00ff00');
 	},
 
-	embed_red_error: (description) => {
+	red_error: (description) => {
 		return new MessageEmbed()
 		.setDescription(description)
 		.setColor('#E74C3C');

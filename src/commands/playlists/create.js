@@ -15,7 +15,7 @@ module.exports = {
 		
 		const prefix = getPrefix(message);
 		if(!tokens[0]) return message.channel.send(embed.embed_yellow_warning(`❗️ **Incorrect amount of arguments.**\nUse \`${prefix}create-playlist [playlist]\` to create a playlist.`));
-		if(tokens[0].includes('-')) return message.channel.send(embed.embed_red_error(`❌ **Invalid character : —**\nPlease choose another name.`));
+		if(tokens[0].includes('-')) return message.channel.send(embed.red_error(`❌ **Invalid character : —**\nPlease choose another name.`));
 		
 		const og_playlist = tokens.join(' ');
 		const playlist = apostropheCheck(tokens).join(' ');
@@ -25,7 +25,7 @@ module.exports = {
 		).then(() => {
 			message.channel.send(embed.embed_green_info(`✅ Created new playlist: ${og_playlist}`));
 		}).catch(err => {
-			message.channel.send(embed.embed_red_error('❌ **Duplicated name.**\nPlease choose a new one.'));
+			message.channel.send(embed.red_error('❌ **Duplicated name.**\nPlease choose a new one.'));
 		});
 	}
 }

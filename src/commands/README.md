@@ -3,8 +3,9 @@
 ## Command types
 * ㊙️  **Text**: `ivooo`, `gif`, `help`, etc.
 * 🎧  **Music**: `play`, `skip`, `stop` and all the usual commands available!
-* ❗️	**Configurable**: update prefix with `change-prefix [new prefix]` (only available for guild owners).
-* 🎹	**Playlists**: `create-playlist`, `show-playlist`, `addto` commands. `play playlist [playlist name]` to add your playlist to the queue.
+* ❗️  **Configurable**: update prefix with `change-prefix [new prefix]` (only available for guild owners).
+* 🎹  **Playlists**: `create-playlist`, `show-playlist`, `addto` commands. `play playlist [playlist name]` to add your playlist to the queue.
+* 🎲  **Random**: give 2 lists to `draw-lots` or use `random-picker` to choose an item from a list. 
 
 ## Future Updates
 
@@ -16,5 +17,6 @@
 - [ ] Database.
 - [ ] Guild owner commands to manage the channels more easily.
 - [ ] Update Ivooo to discord.js v13.
+- [ ] Better usage of the messageEmbed.js file.
 <br/>What I'm currently working on:
 - [x] Improved help command.

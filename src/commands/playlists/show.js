@@ -46,7 +46,7 @@ module.exports = {
 				playlistIndex = result[0][0].id;
 			}).catch(err => {
 				playlistIndex = -1;
-				message.channel.send(embed.embed_red_error(`❌ Playlist '${og_playlist}' does not exist.`));
+				message.channel.send(embed.red_error(`❌ Playlist '${og_playlist}' does not exist.`));
 			});
 
 			if(playlistIndex > -1) {

@@ -53,7 +53,7 @@ module.exports = {
 			).then(() => {
 				message.channel.send(embed.embed_green_info(`✅ ${og_msg.song} by ${og_msg.artist} added to ${og_msg.playlist}`));
 			}).catch(err => {
-				message.channel.send(embed.embed_red_error(`❌ The song '${og_msg.song}' is already in your '${og_msg.playlist}' playlist.`));
+				message.channel.send(embed.red_error(`❌ The song '${og_msg.song}' is already in your '${og_msg.playlist}' playlist.`));
 			});
 		}
 	}

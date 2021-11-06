@@ -19,7 +19,7 @@ module.exports = {
 
 		tokens.shift();	// get rid of the word 'of'
 		const og_tokens = tokens.join(' ').split('to');
-		if(og_tokens[1].includes('-')) return message.channel.send(embed.embed_red_error(`❌ **Invalid character : —**\nPlease choose another name.`));
+		if(og_tokens[1].includes('-')) return message.channel.send(embed.red_error(`❌ **Invalid character : —**\nPlease choose another name.`));
 
 		tokens = adjuster.apostropheCheck(tokens);
 		tokens = tokens.join(' ').split('to');
@@ -35,7 +35,7 @@ module.exports = {
 			playlistIndex = result[0][0].id;
 		}).catch(err => {
 			playlistIndex = -1;
-			message.channel.send(embed.embed_red_error(`🧐 Playlist '${og_tokens[0]}' does not exist.`));
+			message.channel.send(embed.red_error(`🧐 Playlist '${og_tokens[0]}' does not exist.`));
 		});
 
 		if(playlistIndex > -1) {
