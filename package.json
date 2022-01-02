@@ -10,19 +10,20 @@
     "lavalink": "java -jar Lavalink.jar"
   },
   "keywords": [
-    "bot"
+    "discord bot",
+    "discord.js",
+    "node.js"
   ],
   "author": "Marta Silva",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.5.0",
     "dotenv": "^10.0.0",
     "erela.js": "^2.3.3",
     "fs": "^0.0.1-security",
     "lavalink": "^2.11.0",
-    "mysql2": "^2.2.5",
-    "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.12"
+    "mysql2": "^2.3.3",
+    "node-fetch": "^3.1.0",
+    "nodemon": "^2.0.15"
   }
 }

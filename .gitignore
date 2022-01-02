@@ -7,9 +7,13 @@ application.yml
 logs/
 
 # Unfinnished code - a mess, really
-list.txt
 src/commands/music/toca.js
 src/commands/text/help.js
+
+# Notes
+todo_list.txt
+DEV_NOTES.md
+draft_code.js
 
 # Dependencies
 node_modules/
