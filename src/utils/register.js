@@ -16,7 +16,7 @@ async function registerCommands(client, dir) {
 			client.commands.set(loaded.data.name, loaded);
 			console.log(`Loaded command: ${loaded.data.name}`);
 		}
-	} 
+	}
 }
 
 async function registerEvents(client, dir) {
