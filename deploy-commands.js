@@ -5,24 +5,31 @@ const dotenv = require("dotenv").config();
 
 const token = process.env.BOT_TOKEN;
 const clientId = process.env.CLIENT_ID;
-const guildId = process.env.GUILD_ID;
 
-const commands = [];
-// Do not read hidden files, if any
-const directories = fs.readdirSync('./src/commands').filter((file) => !(/(^|\/)\.[^\/\.]/g).test(file));
+function deploy(guildId) {
 
-for(const directory of directories) {
-    const files = fs.readdirSync(`./src/commands/${directory}`).filter((file) => file.endsWith('.js'));
+    const commands = [];
+    // Do not read hidden files, if any
+    const directories = fs.readdirSync('./src/commands').filter((file) => !(/(^|\/)\.[^\/\.]/g).test(file));
 
-    for(const file of files) {
-        const command = require(`./src/commands/${directory}/${file}`);
-        commands.push(command.data.toJSON());
-        console.log(`Deployed command: ${command.data.name}`);
+    for(const directory of directories) {
+
+        if(directory !== 'not-a-slash-command') {
+            const files = fs.readdirSync(`./src/commands/${directory}`).filter((file) => file.endsWith('.js'));
+
+            for(const file of files) {
+                const command = require(`./src/commands/${directory}/${file}`);
+                commands.push(command.data.toJSON());
+                console.log(`Deployed command: ${command.data.name}`);
+            }
+        }
     }
-}
 
-const rest = new REST({ version: '9' }).setToken(token);
+    const rest = new REST({ version: '9' }).setToken(token);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
-	.catch(console.error);
+    rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
+        .then(() => console.log('Successfully registered application commands.'))
+        .catch(console.error);
+    }
+
+module.exports = { deploy };
