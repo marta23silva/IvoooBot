@@ -24,7 +24,7 @@ module.exports = {
 	.setName('minecraft')
 	.setDescription('Shows Minecraft server status'),
 	
-	async execute(interaction) {
+	async execute(interaction, tokens) {
 		
 		if(!SERVER_ADDRESS) { return interaction.reply('I do not have an IP to check if your server is up. Please contact my owner 👀'); }
 
