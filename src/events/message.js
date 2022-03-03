@@ -1,3 +1,5 @@
+const { prefix } = require('../utils/getPrefix');
+
 module.exports = {
 
 	data: {
@@ -7,7 +9,6 @@ module.exports = {
 	async execute(messageCreate) {
 		
 		console.log(messageCreate.author.username + ' said: ' + messageCreate.content);
-		const prefix = 'ivooo';
 
 		if(messageCreate.author.bot) return;
 		if(!messageCreate.content.toLowerCase().startsWith(prefix)) return;
@@ -18,6 +19,6 @@ module.exports = {
 		const loaded = messageCreate.client.commands.get(command);
 		if(!loaded) return;
 
-		loaded.execute(messageCreate);
+		loaded.execute(messageCreate, tokens);
 	}
 };
