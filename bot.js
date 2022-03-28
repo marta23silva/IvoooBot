@@ -1,16 +1,14 @@
-require('dotenv').config();
-const config = require('./config');
+const { Client, Intents, Collection } = require("discord.js");
+const dotenv = require("dotenv").config();
+const fs = require('fs');
 
-const discord = require('discord.js');
-const client = new discord.Client();
-client.manager = require('./src/manager/manager')(client);
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+client.commands = new Collection();
+
+client.once("ready", () => { console.log('Hello! 🖤'); });
 
 const register = require('./src/utils/register');
-register.registerEvents(client, '../../src/events');
-register.registerCommands(client, '../../src/commands');
+register.registerCommands(client, '../commands');
+register.registerEvents(client, '../events');
 
-(async () => {
-	await client.login(process.env.BOT_TOKEN);
-})();
-
-module.exports = { client }
+client.login(process.env.BOT_TOKEN);

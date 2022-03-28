@@ -2,10 +2,10 @@
 <h1 align="center">Ivooo</h1>
 <h3 align="center">The Discord Bot</h3>
 
-[![](https://img.shields.io/badge/discord.js-v12.5.3-blue.svg?logo=npm)](https://github.com/discordjs)
+[![](https://img.shields.io/badge/discord.js-v13.5.0-blue.svg?logo=npm)](https://github.com/discordjs)
 [![](https://img.shields.io/badge/erela.js-v2.3.3-green.svg?logo=npm)](https://solaris.codes/projects/erelajs/)
 [![](https://img.shields.io/badge/lavalink-v2.11.0-red)](https://github.com/freyacodes/Lavalink)
-[![](https://img.shields.io/badge/mysql2-v2.2.5-blue.svg?logo=npm)](https://www.npmjs.com/package/mysql2)
+[![](https://img.shields.io/badge/mysql2-v2.3.3-blue.svg?logo=npm)](https://www.npmjs.com/package/mysql2)
 > Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
 > This bot is not being hosted yet. More info about commands on `src/commands/`.
 
