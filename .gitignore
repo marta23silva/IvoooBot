@@ -7,8 +7,6 @@ application.yml
 logs/
 
 # Unfinnished code - a mess, really
-src/commands/music/toca.js
-src/commands/text/help.js
 
 # Notes
 notes/
