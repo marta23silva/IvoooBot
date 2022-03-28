@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const minecraft = require('minecraft-server-util');
-const { MessageEmbed } = require('discord.js');
+const { minecraftServerStatus_msg } = require('../../utils/embeds.js');
 
 const SERVER_ADDRESS = process.env.SERVER_ADDRESS;
 const SERVER_PORT = 25565 // default minecraft server port
@@ -33,23 +33,10 @@ module.exports = {
 
 		getStatus().then(data => {
 			const PLAYERS_STATUS = data.onlinePlayers ? PLAYING.replace('{players}', data.onlinePlayers) : 'Nobody is playing.';
-			const status = new MessageEmbed()
-				.setColor('29dd00')
-				.setAuthor({ 
-					name: 'Minecraft server is online!',
-					iconURL: 'https://media.discordapp.net/attachments/868061485425893408/868268766788726815/Banzai-TLK.png?width=530&height=530',
-				})
-				.setDescription(PLAYERS_STATUS)
-				.setThumbnail('https://cdn.discordapp.com/attachments/868061485425893408/947279898429501480/12a0ed7c6bc09b73d6558c6f69ed7f5f.jpeg');
+			const status = minecraftServerStatus_msg('29dd00', 'Minecraft server is online!', PLAYERS_STATUS);
 			return channel.send({ embeds: [ status ] });
 		}).catch(err => {
-			const status = new MessageEmbed()
-				.setColor('e30808')
-				.setAuthor({
-					name: 'Minecraft server is offline!',
-					iconURL: 'https://media.discordapp.net/attachments/868061485425893408/868268766788726815/Banzai-TLK.png?width=530&height=530',
-				})
-				.setThumbnail('https://cdn.discordapp.com/attachments/868061485425893408/947279898429501480/12a0ed7c6bc09b73d6558c6f69ed7f5f.jpeg');
+			const status = minecraftServerStatus_msg('e30808', 'Minecraft server is offline!', '');
 			return channel.send({ embeds: [ status ] });
 		})
 	},
