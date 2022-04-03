@@ -5,9 +5,11 @@ module.exports = {
 
 	data: new SlashCommandBuilder()
 	.setName('gif')
-	.setDescription('Replies with a gif')
+	.setDescription('Replies with a gif.')
 	.addStringOption(option => option.setName('search').setDescription('Theme of the gif you want Ivooo to send')),
 	
+	aliases: [],
+
 	async execute(interaction, tokens) {
 		let keywords = '';
 		let search;

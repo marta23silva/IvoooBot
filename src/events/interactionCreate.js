@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
 		// Ignore if it's not a command
 		if (!interaction.isCommand()) return;
-		const command = interaction.client.commands.get(interaction.commandName);
+		const command = interaction.client.commands.get(interaction.commandName) || interaction.client.aliases.get(interaction.commandName);
 
 		// Ignore if command does not exist
 		if(!command) return;

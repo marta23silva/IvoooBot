@@ -13,6 +13,8 @@ module.exports = {
 	.addStringOption(option => option.setName('list1').setDescription('Items of the 1st list [ SEPARATE EACH ITEM WITH A COMMA (,) ]').setRequired(true))
 	.addStringOption(option => option.setName('list2').setDescription('Items of the 2nd list [ SEPARATE EACH ITEM WITH A COMMA (,) ]').setRequired(true)),
 
+	aliases: ["sorteio"],
+
 	async execute(interaction, tokens) {
 
 		if(!interaction.options) { return interaction.reply({ embeds: [ slashcmd_msg ] }); }

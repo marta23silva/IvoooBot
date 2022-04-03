@@ -10,7 +10,7 @@ function deploy(guildId) {
 
     const commands = [];
     // Do not read hidden files, if any
-    const directories = fs.readdirSync('./src/commands').filter((file) => !(/(^|\/)\.[^\/\.]/g).test(file));
+    const directories = fs.readdirSync('./src/commands').filter((file) => !(/(^|\/)\.[^\/\.]/g).test(file) && !file.endsWith('.md'));
 
     for(const directory of directories) {
 
@@ -20,6 +20,15 @@ function deploy(guildId) {
             for(const file of files) {
                 const command = require(`./src/commands/${directory}/${file}`);
                 commands.push(command.data.toJSON());
+                
+                if(command.aliases) {
+                    command.aliases.forEach(alias => {
+                        command.data.name = alias;
+                        commands.push(command.data.toJSON())
+                        console.log(`Deployed alias: ${alias}`);
+                    });
+                }
+
                 console.log(`Deployed command: ${command.data.name}`);
             }
         }

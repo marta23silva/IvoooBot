@@ -28,6 +28,8 @@ module.exports = {
 	.setDescription('Ivooo is wise. Ivooo gives the best advice.')
 	.addStringOption(option => option.setName('question').setDescription('What do you want to ask Ivooo?').setRequired(true)),
 	
+	aliases: ["conselho"],
+
 	async execute(interaction, tokens) {
 		let index = Math.floor(Math.random() * replies.length);
 		await interaction.reply(replies[index]);

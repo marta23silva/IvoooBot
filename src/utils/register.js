@@ -15,6 +15,13 @@ async function registerCommands(client, dir) {
 			
 			client.commands.set(loaded.data.name, loaded);
 			console.log(`Loaded command: ${loaded.data.name}`);
+
+			if(loaded.aliases) {
+				loaded.aliases.forEach(alias => {
+					client.aliases.set(alias, loaded);
+					console.log(`Loaded alias: ${alias}`);
+				});
+			}
 		}
 	}
 }

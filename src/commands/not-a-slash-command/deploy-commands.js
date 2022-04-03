@@ -8,6 +8,8 @@ module.exports = {
 		name: 'deploy-commands',
 		description: 'Deploys slash commands on the server.'
 	},
+
+	aliases: ["dp", "deploy"],
 	
 	async execute(interaction, tokens) {
 

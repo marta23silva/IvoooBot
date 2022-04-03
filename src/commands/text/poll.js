@@ -9,11 +9,13 @@ module.exports = {
 
 	data: new SlashCommandBuilder()
 	.setName('poll')
-	.setDescription('Starts a poll')
+	.setDescription('Starts a poll.')
 	.addStringOption(option => option.setName('title').setDescription('Title of the poll').setRequired(true))
 	.addStringOption(option => option.setName('description').setDescription('Description of the poll').setRequired(true))
 	.addStringOption(option => option.setName('items').setDescription('Items of the poll [ SEPARATE EACH ITEM WITH A COMMA (,) ]').setRequired(true)),
 	
+	aliases: ["sondagem"],
+
 	async execute(interaction, tokens) {
 
 		if(!interaction.options) { return interaction.reply({ embeds: [ slashcmd_msg ] }); }

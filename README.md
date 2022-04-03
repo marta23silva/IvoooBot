@@ -10,7 +10,7 @@
 [![](https://img.shields.io/badge/nodemon-2.0.15-lightgrey?logo=npm)](https://www.npmjs.com/package/nodemon)
 
 > Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
-> This bot is not being hosted yet.
+> This bot is not being hosted yet. More info on the commands available on `src/commands`.
 
 ## How to use this code on your bot:
 
@@ -29,7 +29,9 @@ CLIENT_ID=
 OWNER_ID=
 TENOR_KEY=
 ```
-You can get a bot Token and a Client ID on the [Discord Developer Portal](https://discord.com/developers/applications). The Owner ID should be your Discord ID.
+You can get a bot Token and a Client ID on the [Discord Developer Portal](https://discord.com/developers/applications). The Owner ID should be your Discord ID.<br/>
+The default prefix is `ivooo`, but you can change this in `src/utils/getPrefix.js`.
+
 ### How to run 🛸
 * Open a terminal/cmd window and run `npm run start` to start your bot.
 
@@ -40,4 +42,4 @@ Very nice and useful resources that help me **a whole lot**:
 * [The Coding Train](https://www.youtube.com/user/shiffman)
 * [Filipe Deschamps](https://www.youtube.com/c/FilipeDeschamps)
 
-<br/>Thank you!
+Thank you!

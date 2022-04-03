@@ -16,7 +16,7 @@ module.exports = {
 		const tokens = messageCreate.content.slice(prefix.length).trim().split(/ +/g);
 		const command = tokens.shift().toLowerCase();
 
-		const loaded = messageCreate.client.commands.get(command);
+		const loaded = messageCreate.client.commands.get(command) || messageCreate.client.aliases.get(command);
 		if(!loaded) return;
 
 		loaded.execute(messageCreate, tokens);

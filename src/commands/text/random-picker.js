@@ -11,6 +11,8 @@ module.exports = {
 	.setDescription('Selects a random item from the list.')
 	.addStringOption(option => option.setName('list').setDescription('Items of the list [ SEPARATE EACH ITEM WITH A COMMA (,) ]').setRequired(true)),
 
+	aliases: ["pick"],
+
 	async execute(interaction, tokens) {
 
 		if(!interaction.options) { return interaction.reply({ embeds: [ slashcmd_msg ] }); }
