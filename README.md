@@ -1,16 +1,18 @@
 <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Ivooo" src="https://media.discordapp.net/attachments/868061485425893408/868268766788726815/Banzai-TLK.png?width=530&height=530"> 
 <h1 align="center">Ivooo</h1>
 <h3 align="center">Discord Bot</h3>
+<br/>
 
+> Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
+> This bot is not being hosted yet. More info on the commands available on `src/commands`.
+
+## Dependencies:
 [![](https://img.shields.io/badge/discord.js-v13.5.0-blue.svg?logo=npm)](https://www.npmjs.com/package/discord.js)
 [![](https://img.shields.io/badge/minecraft--server--util-3.7.2-green?logo=npm)](https://www.npmjs.com/package/minecraft-server-util)
 [![](https://img.shields.io/badge/node--fetch-2.6.1-yellow?logo=npm)](https://www.npmjs.com/package/node-fetch)
 [![](https://img.shields.io/badge/dotenv-10.0.0-orange?logo=npm)](https://www.npmjs.com/package/dotenv)
 [![](https://img.shields.io/badge/fs-0.0.1--security-9cf?logo=npm)](https://www.npmjs.com/package/fs)
 [![](https://img.shields.io/badge/nodemon-2.0.15-lightgrey?logo=npm)](https://www.npmjs.com/package/nodemon)
-
-> Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
-> This bot is not being hosted yet. More info on the commands available on `src/commands`.
 
 ## How to use this code on your bot:
 
