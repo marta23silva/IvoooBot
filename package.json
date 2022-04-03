@@ -22,11 +22,8 @@
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.5.0",
     "dotenv": "^10.0.0",
-    "erela.js": "^2.3.3",
     "fs": "^0.0.1-security",
-    "lavalink": "^2.11.0",
     "minecraft-server-util": "^3.7.2",
-    "mysql2": "^2.3.3",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.15"
   }
