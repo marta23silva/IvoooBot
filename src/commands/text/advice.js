@@ -21,6 +21,26 @@ const replies = [
 	"Your question is... Well, I think I’ll just find a lake full of piranhas to jump into instead.",
 ];
 
+const respostas = [
+	"Deixa-te de perguntas parvas e vai buscar o abakachi.",
+	"Já viste o The Expanse? Não tem nada a ver com o que perguntaste, mas pelo menos é mais interessante.",
+	"Nossa, que pergunta trivial...",
+	"Sim, desde que vadies menos...",
+	"Não, Susana. Deixa-te de ideias mirabolantes e vai comprar o passe.",
+	"Estou agora a ver na minha bola de cristal e vejo-te debaixo da ponte, lágrimas, drama e escassez de tabaco.",
+	"Acho essa pergunta ilegal... Vai mas é trabalhar no Eclipse!",
+	"Ai Ivooo, agora pedem conselhos ao bot... Ao que isto chegou 🤦🏻‍♀️",
+	"https://tenor.com/xAMr.gif",
+	"Parece que isso dá muito trabalho, por isso não.",
+	"Numa escala de 0-10 isso é um grande NÃO.",
+	"Depois de ter reunido o comité a decisão foi unânime... Faz o que quiseres, a este ponto não quero saber.",
+	"Até podia responder, mas algo me diz que não tens dinheiro suficiente para pagar a minha sabedoria.",
+	"https://tenor.com/be5o8.gif",
+	"PÁRA DE GASTAR DINHEIRO EM CARROS E OFICINAS E VADIAGENS 🤬 COMO ASSIM ESTÁS FALIDA? CLARO QUE ESTÁS FALIDA!",
+	"Sim, é certo de que vai acabar em asneira.",
+	"Não. Não. Não. Não. Não. Não. Não. Não. Não. Não. Não. Não. É melhor repetir para interiorizares a resposta: não.",
+];
+
 module.exports = {
 
 	data: new SlashCommandBuilder()
@@ -32,6 +52,12 @@ module.exports = {
 
 	async execute(interaction, tokens) {
 		let index = Math.floor(Math.random() * replies.length);
-		await interaction.reply(replies[index]);
+
+		if(interaction.commandName === 'conselho') {
+			index = Math.floor(Math.random() * respostas.length);
+			await interaction.reply(respostas[index]);
+		} else {
+			await interaction.reply(replies[index]);
+		}
 	},
 };
