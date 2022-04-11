@@ -10,6 +10,7 @@
 | poll | sondagem | Starts a poll. | /poll (title) (description) (1,2,3) |
 | random-picker | pick | Selects a random item from the list. | /random-picker (1,2,3) |
 | react | good <br/>dumb <br/>say | Sends a different reaction based on what you say. | ivooo react |
+| ping |  | Pong! | /ping |
 
 ## ⚙️ Configuration
 | Command | Aliases | Description | Usage |

@@ -1,7 +1,12 @@
 const { prefix } = require('../../utils/getPrefix');
+const { NOSReply_pt } = require('../../utils/replies');
 let say = false;
 
 const acceptedCmds = {
+	nos(interaction, alias) {
+		let index = Math.floor(Math.random() * NOSReply_pt.length);
+		return NOSReply_pt[index];
+	},
 	dumb(interaction, alias) {
 		return 'https://tenor.com/bpbwu.gif';
 	},
@@ -41,14 +46,14 @@ module.exports = {
 		description: 'Sends a different reaction based on what you say.'
 	},
 
-	aliases: ["dumb", "burro", "good", "say"],
+	aliases: ["dumb", "burro", "good", "say", "nos"],
 	
 	async execute(interaction, tokens) {
 		say = false;
 		const channel = interaction.client.channels.cache.get(interaction.channelId);
 		const alias = interaction.content.slice(prefix.length).trim().split(/ +/g);
 		if(alias[0] === 'burro') { alias[0] = 'dumb'; }
-		const chooseMessage = acceptedCmds[alias[0]];
+		const chooseMessage = acceptedCmds[alias[0].toLowerCase()];
 		const msg = chooseMessage(interaction, alias);
 		if(say === true) {
 			return channel.send(msg);
