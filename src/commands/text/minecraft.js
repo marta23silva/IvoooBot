@@ -10,13 +10,20 @@ const PLAYING = '{players} people are playing!';
 
 const no_ip = warning_msg(`Please specify a server IP address.`);
 
+const options = {
+	timeout: 1000 * 5,
+	enableSRV: true
+}
+
 function getStatus() {
 	if (Date.now() < lastUpdated + cacheTime) return Promise.resolve(info);
-	return minecraft.status(SERVER_ADDRESS, { port: SERVER_PORT })
+	return minecraft.status(SERVER_ADDRESS, SERVER_PORT, options)
 		.then(response => {
 			info = response;
 			lastUpdated = Date.now();
 			return info;
+		}).catch(err => {
+			console.log(err);
 		})
 }
 
@@ -31,21 +38,17 @@ module.exports = {
 	
 	async execute(interaction, tokens) {
 
-		let address = '';
+		// Get IP specified by the user
+		let address = interaction.options.getString('address');
+		if(address) { SERVER_ADDRESS = address; }
 		
-		if(!SERVER_ADDRESS) {
-			// Get IP specified by the user
-			address = interaction.options.getString('address');
-			if(address) { SERVER_ADDRESS = address; }
-			// No IP to check for
-			if(!interaction.options || !address) { return interaction.reply({ embeds: [ no_ip ] }) }
-		}
+		if(!SERVER_ADDRESS) { return interaction.reply({ embeds: [ no_ip ] }); }
 
 		const channel = interaction.client.channels.cache.get(interaction.channelId);
 		interaction.reply('Checking if the server is up...');
 
 		getStatus().then(data => {
-			const PLAYERS_STATUS = data.onlinePlayers ? PLAYING.replace('{players}', data.onlinePlayers) : 'Nobody is playing.';
+			const PLAYERS_STATUS = data.players.online ? PLAYING.replace('{players}', data.players.online) : 'Nobody is playing.';
 			const status = minecraftServerStatus_msg('29dd00', 'Minecraft server is online!', PLAYERS_STATUS);
 			return channel.send({ embeds: [ status ] });
 		}).catch(err => {
