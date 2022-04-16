@@ -7,22 +7,26 @@
 > This bot is not being hosted yet. More info on the commands available on `src/commands`.
 
 ## Dependencies:
-[![](https://img.shields.io/badge/discord.js-v13.5.0-blue.svg?logo=npm)](https://www.npmjs.com/package/discord.js)
-[![](https://img.shields.io/badge/minecraft--server--util-3.7.2-green?logo=npm)](https://www.npmjs.com/package/minecraft-server-util)
+[![](https://img.shields.io/badge/discord.js-13.6.0-blue.svg?logo=npm)](https://www.npmjs.com/package/discord.js)
+[![](https://img.shields.io/badge/minecraft--server--util-5.2.9-green?logo=npm)](https://www.npmjs.com/package/minecraft-server-util)
 [![](https://img.shields.io/badge/node--fetch-2.6.1-yellow?logo=npm)](https://www.npmjs.com/package/node-fetch)
 [![](https://img.shields.io/badge/dotenv-10.0.0-orange?logo=npm)](https://www.npmjs.com/package/dotenv)
 [![](https://img.shields.io/badge/fs-0.0.1--security-9cf?logo=npm)](https://www.npmjs.com/package/fs)
 [![](https://img.shields.io/badge/nodemon-2.0.15-lightgrey?logo=npm)](https://www.npmjs.com/package/nodemon)
+[![](https://img.shields.io/badge/Lavalink-3.4-ff69b4?logo=github)](https://github.com/freyacodes/Lavalink)
+[![](https://img.shields.io/badge/erela.js-2.3.3-success?logo=npm)](https://www.npmjs.com/package/erela.js)
 
 ## How to use this code on your bot:
 
 ### Requirements ✔️
 * [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 * [Tenor Key](https://tenor.com/developer/keyregistration) to get gifs from their API
+* Java 11 (or greater)
 
 ### Bot Setup ⚙️
 * Clone the repository with `git clone https://github.com/marta23silva/IvoooBot.git` or download in ZIP format.
 * Install all the dependencies by running `npm i`.
+* Download the latest version of [Lavalink](https://github.com/freyacodes/Lavalink/releases). Put an [`application.yml`](https://github.com/freyacodes/Lavalink/blob/master/LavalinkServer/application.yml.example) file in the same directory.
 * Create a `.env` file and complete it with your info:
 ```
 BOT_TOKEN=
@@ -30,11 +34,13 @@ CLIENT_ID=
 
 OWNER_ID=
 TENOR_KEY=
+LAVALINK_PASSWORD=
 ```
-You can get a bot Token and a Client ID on the [Discord Developer Portal](https://discord.com/developers/applications). The Owner ID should be your Discord ID.<br/>
+You can get a bot Token and a Client ID on the [Discord Developer Portal](https://discord.com/developers/applications). The Owner ID should be your Discord ID. The Lavalink password is defined on the `application.yml` file. <br/>
 The default prefix is `ivooo`, but you can change this in `src/utils/getPrefix.js`.
 
 ### How to run 🛸
+* Open a terminal/cmd window and run `npm run lavalink` to start your Lavalink server (only needed when using voice commands).
 * Open a terminal/cmd window and run `npm run start` to start your bot.
 
 ## Acknowledgements

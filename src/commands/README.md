@@ -12,6 +12,14 @@
 | react | good <br/>dumb <br/>say | Sends a different reaction based on what you say. | ivooo react |
 | ping |  | Pong! | /ping |
 
+## 🎤 Voice
+| Command | Aliases | Description | Usage |
+|---------|:-------:|-------------|-------|
+| join | entra | Joins the voice channel you're currently in. | /join |
+| lofi-girl |  | Plays the lofi girl live playlist. | /lofi-girl |
+| jazz |  | Plays a jazz playlist. | /jazz |
+| leave | sai | Leaves the voice channel. | /leave |
+
 ## ⚙️ Configuration
 | Command | Aliases | Description | Usage |
 |---------|:-------:|-------------|-------|
@@ -19,7 +27,7 @@
 
 ## Future Updates
 
-- [ ] Commands 🎮 - music commands.
+- [x] Commands 🎮 - more music commands.
 - [ ] Commands 🎮 - help command. 
 
 ## Future Improvements ⚙️

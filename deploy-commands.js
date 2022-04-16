@@ -20,6 +20,7 @@ function deploy(guildId) {
             for(const file of files) {
                 const command = require(`./src/commands/${directory}/${file}`);
                 commands.push(command.data.toJSON());
+                const mainCmd = command.data.name;
                 
                 if(command.aliases) {
                     command.aliases.forEach(alias => {
@@ -29,7 +30,7 @@ function deploy(guildId) {
                     });
                 }
 
-                console.log(`Deployed command: ${command.data.name}`);
+                console.log(`Deployed command: ${mainCmd}`);
             }
         }
     }
