@@ -4,9 +4,8 @@
   "description": "ivooo discord bot",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./bot.js",
-    "start": "node ./bot.js",
+    "dev": "nodemon .",
+    "start": "node .",
     "lavalink": "java -jar Lavalink.jar",
     "deploy": "node ./deploy-commands.js"
   },
@@ -25,7 +24,9 @@
     "erela.js": "^2.3.3",
     "fs": "^0.0.1-security",
     "minecraft-server-util": "^5.2.9",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.15"
   }
 }

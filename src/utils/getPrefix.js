@@ -1,1 +1,1 @@
-module.exports = { prefix: 'ivooo' }
+module.exports = { prefix: "ivooo" };

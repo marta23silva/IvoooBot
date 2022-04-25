@@ -8,7 +8,7 @@ module.exports = {
 	
 	aliases: [],
 
-	async execute(interaction, tokens) {
+	async execute(interaction) {
 		
 		if(interaction.content) {
 			const msg = await interaction.reply('Pinging...');
