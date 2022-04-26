@@ -20,4 +20,4 @@ const NOSReply_pt = [
   "Isto é apenas um exemplo. Podes adicionar mais respostas aqui.",
 ];
 
-module.exports = { adviceReply_en, adviceReply_pt, NOSReply_pt };
+module.exports = { adviceReply_en, adviceReply_pt, NOSReply_pt, adviceReply_de };

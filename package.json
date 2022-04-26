@@ -2,7 +2,7 @@
   "name": "ivooobot",
   "version": "1.0.0",
   "description": "ivooo discord bot",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",

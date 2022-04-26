@@ -1,7 +1,7 @@
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-const fs = require("fs");
-const dotenv = require("dotenv").config();
+const { readdirSync } = require("fs");
+require("dotenv").config();
 
 const token = process.env.BOT_TOKEN;
 const clientId = process.env.CLIENT_ID;
@@ -9,14 +9,14 @@ const clientId = process.env.CLIENT_ID;
 function deploy(guildId) {
   const commands = [];
   // Do not read hidden files, if any
-  const directories = fs
-    .readdirSync("./src/commands")
+  const directories = 
+    readdirSync("./src/commands")
     .filter((file) => !/(^|\/)\.[^\/\.]/g.test(file) && !file.endsWith(".md"));
 
   for (const directory of directories) {
     if (directory !== "not-a-slash-command") {
-      const files = fs
-        .readdirSync(`./src/commands/${directory}`)
+      const files = 
+         readdirSync(`./src/commands/${directory}`)
         .filter((file) => file.endsWith(".js"));
 
       for (const file of files) {

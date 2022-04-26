@@ -8,6 +8,8 @@ const client = new Client({
     Intents.FLAGS.GUILD_VOICE_STATES,
   ],
 });
+
+
 client.commands = new Collection();
 client.aliases = new Collection();
 client.manager = require("./src/utils/manager")(client);
