@@ -1,4 +1,4 @@
-const fs = require("fs");
+const { readFile, writeFile } = require("fs");
 
 module.exports = {
   data: {
@@ -13,7 +13,7 @@ module.exports = {
       prefix: "ivooo",
     };
 
-    fs.readFile(
+    readFile(
       "./data/guilds.json",
       "utf8",
       function readFileCallback(err, data) {
@@ -23,7 +23,7 @@ module.exports = {
           var obj = JSON.parse(data); // convert to an object
           obj.guilds.push(toAdd); // add the data
           var json = JSON.stringify(obj, null, 2); // convert back to json
-          fs.writeFile("./data/guilds.json", json, "utf8", (err) => {
+          writeFile("./data/guilds.json", json, "utf8", (err) => {
             if (err) {
               return console.log(err);
             }

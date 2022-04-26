@@ -3,8 +3,8 @@ const { verifyChannel } = require("../../utils/utils");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("lofi-girl")
-    .setDescription(`Plays the lofi girl live playlist.`),
+    .setName("lofi")
+    .setDescription(`Plays a lofi live playlist.`),
 
   aliases: [],
 

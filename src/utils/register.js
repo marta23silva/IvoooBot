@@ -1,11 +1,11 @@
 const path = require("path");
-const fs = require("fs");
+const { lstatSync, readdirSync } = require("fs");
 
 async function registerCommands(client, dir) {
   const filePath = path.join(__dirname, dir);
-  const commandFiles = await fs.readdirSync(filePath);
+  const commandFiles = await readdirSync(filePath);
   for (const file of commandFiles) {
-    const stat = await fs.lstatSync(path.join(filePath, file));
+    const stat = await lstatSync(path.join(filePath, file));
     if (stat.isDirectory()) {
       registerCommands(client, path.join(dir, file));
     }
@@ -31,9 +31,9 @@ async function registerCommands(client, dir) {
 
 async function registerEvents(client, dir) {
   const filePath = path.join(__dirname, dir);
-  const eventFiles = await fs.readdirSync(filePath);
+  const eventFiles = await readdirSync(filePath);
   for (const file of eventFiles) {
-    const stat = await fs.lstatSync(path.join(filePath, file));
+    const stat = await lstatSync(path.join(filePath, file));
     if (stat.isDirectory()) {
       registerEvents(client, path.join(dir, file));
     }

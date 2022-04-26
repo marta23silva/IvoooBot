@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { error_msg, custom_msg } = require("../../utils/embeds");
-const { shuffle } = require("../../utils/utils");
+//const { shuffle } = require("../../utils/utils");
 
 const slashcmd_msg = error_msg(
   `You have to use the slash command to use "random-picker".`
