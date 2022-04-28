@@ -15,6 +15,7 @@
 [![](https://img.shields.io/badge/nodemon-2.0.15-lightgrey?logo=npm)](https://www.npmjs.com/package/nodemon)
 [![](https://img.shields.io/badge/Lavalink-3.4-ff69b4?logo=github)](https://github.com/freyacodes/Lavalink)
 [![](https://img.shields.io/badge/erela.js-2.3.3-success?logo=npm)](https://www.npmjs.com/package/erela.js)
+[![](https://img.shields.io/badge/pokedev.js-1.1.4-critical?logo=npm)](https://www.npmjs.com/package/pokedev.js)
 
 ## How to use this code on your bot:
 
