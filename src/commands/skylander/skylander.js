@@ -1,12 +1,14 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { getPokemonRandom } = require("pokedev.js");
+const { getSkylanderRandom } = require("skylander.js");
 
-// want to add a 10 pokemon quiz instead of only 1
+// want to add a 10 skylander quiz instead of only 1
 // add embeds
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("pokemon")
-    .setDescription("Sends an image of a Pokemon. You have to guess its name."),
+    .setName("skylander")
+    .setDescription(
+      "Sends an image of a Skylander. You have to guess its name."
+    ),
 
   aliases: [],
 
@@ -20,16 +22,16 @@ module.exports = {
     );
 
     interaction.reply(
-      `You have 30 seconds to guess the Pokemon's name correctly.`
+      `You have 30 seconds to guess the Skylander's name correctly.`
     );
 
-    const pokemon = await getPokemonRandom();
-    if (!pokemon) {
+    const skylander = await getSkylanderRandom();
+    if (!skylander) {
       return channel.send("There was an API error. Please try again later.");
     }
-    await channel.send(pokemon.forms[0]);
-    console.log(pokemon);
-    const correctAnswer = pokemon.name;
+    await channel.send(skylander.forms[0]);
+    console.log(skylander);
+    const correctAnswer = skylander.name;
 
     const filter = (m) => !m.author.bot; // ignore bot messages
     const collector = interaction.channel.createMessageCollector({

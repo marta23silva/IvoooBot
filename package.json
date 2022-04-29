@@ -25,7 +25,8 @@
     "fs": "^0.0.1-security",
     "minecraft-server-util": "^5.2.9",
     "node-fetch": "^2.6.1",
-    "pokedev.js": "^1.1.4"
+    "pokedev.js": "^1.1.4",
+    "skylander.js": "^1.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
