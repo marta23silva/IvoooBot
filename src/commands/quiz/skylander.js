@@ -26,11 +26,12 @@ module.exports = {
     );
 
     const skylander = await getSkylanderRandom();
+    console.log(skylander);
     if (!skylander) {
+      console.log('api');
       return channel.send("There was an API error. Please try again later.");
     }
-    await channel.send(skylander.forms[0]);
-    console.log(skylander);
+    await channel.send(skylander.image);
     const correctAnswer = skylander.name;
 
     const filter = (m) => !m.author.bot; // ignore bot messages

@@ -8,7 +8,7 @@ logs/
 
 # Unfinnished code - a mess, really
 src/commands/config
-src/commands/quiz
+src/commands/quiz/add-song.txt
 src/commands/text/invite.txt
 data/song.json
 

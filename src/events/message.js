@@ -5,25 +5,26 @@ module.exports = {
     name: "messageCreate",
   },
 
-  async execute(messageCreate) {
+  async execute(message) {
     console.log(
-      messageCreate.author.username + " said: " + messageCreate.content
+      message.author.username + " said: " + message.content
     );
 
-    if (messageCreate.author.bot) return;
-    if (!messageCreate.content.toLowerCase().startsWith(prefix)) return;
+    if (message.author.bot) return;
+    if (message.mentions.has(message.client.user)) return message.reply(`My prefix is 'Ivooo'.`);
+    if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-    const tokens = messageCreate.content
+    const tokens = message.content
       .slice(prefix.length)
       .trim()
       .split(/ +/g);
     const command = tokens.shift().toLowerCase();
 
     const loaded =
-      messageCreate.client.commands.get(command) ||
-      messageCreate.client.aliases.get(command);
+      message.client.commands.get(command) ||
+      message.client.aliases.get(command);
     if (!loaded) return;
 
-    loaded.execute(messageCreate, tokens);
+    loaded.execute(message, tokens);
   },
 };

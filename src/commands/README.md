@@ -7,10 +7,10 @@
 | draw-lots | sorteio | Assigns one item of the first list to another one of the second list. | /draw-lots (1,2,3) (3,2,1) |
 | gif |  | Replies with a gif. | /gif (optional search words) |
 | minecraft |  | Shows Minecraft server status. | /minecraft (optional server IP) |
+| ping |  | Pong! | /ping |
 | poll | sondagem | Starts a poll. | /poll (title) (description) (1,2,3) |
 | random-picker | pick | Selects a random item from the list. | /random-picker (1,2,3) |
 | react | good <br/>dumb <br/>say | Sends a different reaction based on what you say. | ivooo react |
-| ping |  | Pong! | /ping |
 
 ## 🎤 Voice
 | Command | Aliases | Description | Usage |
@@ -20,6 +20,12 @@
 | jazz |  | Plays a jazz playlist. | /jazz |
 | leave | sai | Leaves the voice channel. | /leave |
 
+## 📚 Quiz
+| Command | Aliases | Description | Usage |
+|---------|:-------:|-------------|-------|
+| pokemon |  | Sends an image of a Pokemon. You have to guess its name. | /pokemon |
+| skylander |  | Sends an image of a Skylander. You have to guess its name. | /skylander |
+
 ## ⚙️ Configuration
 | Command | Aliases | Description | Usage |
 |---------|:-------:|-------------|-------|
@@ -28,6 +34,7 @@
 ## Future Updates
 
 - [x] Commands 🎮 - more music commands.
+- [ ] Commands 🎮 - music quiz.
 - [ ] Commands 🎮 - help command. 
 
 ## Future Improvements ⚙️

@@ -17,6 +17,10 @@ client.manager = require("./src/utils/manager")(client);
 client.once("ready", () => {
   console.log("Hello! 🖤");
   client.manager.init(client.user.id);
+  client.user.setPresence({
+    activities: [{ name: 'hyenas laughing', type: 'LISTENING' }],
+    status: "online",
+  });
 });
 
 client.on("raw", (d) => client.manager.updateVoiceState(d));
