@@ -1,5 +1,6 @@
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
+const { ChalkAdvanced } = require("chalk-advanced");
 const { readdirSync } = require("fs");
 require("dotenv").config();
 
@@ -8,7 +9,7 @@ const clientId = process.env.CLIENT_ID;
 
 function deploy(guildId) {
   const commands = [];
-  // Do not read hidden files, if any
+  // Do not read hidden files or markdown, if any
   const directories = 
     readdirSync("./src/commands")
     .filter((file) => !/(^|\/)\.[^\/\.]/g.test(file) && !file.endsWith(".md"));
@@ -28,11 +29,10 @@ function deploy(guildId) {
           command.aliases.forEach((alias) => {
             command.data.name = alias;
             commands.push(command.data.toJSON());
-            console.log(`Deployed alias: ${alias}`);
+            // console.log(ChalkAdvanced.gray(`Deployed alias: ${alias}`));
           });
         }
-
-        console.log(`Deployed command: ${mainCmd}`);
+        // console.log(ChalkAdvanced.cyan(`Deployed command: ${mainCmd}`));
       }
     }
   }
@@ -41,8 +41,11 @@ function deploy(guildId) {
 
   rest
     .put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-    .then(() => console.log("Successfully registered application commands."))
-    .catch(console.error);
+    .then(() => console.log(ChalkAdvanced.green("Successfully registered application commands.")))
+    .catch((err) => {
+      console.log(ChalkAdvanced.red("Failed to register applications commands"));
+      console.log(err);
+    });
 }
 
 module.exports = { deploy };

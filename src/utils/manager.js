@@ -1,4 +1,5 @@
 const { Manager } = require("erela.js");
+const { ChalkAdvanced } = require("chalk-advanced");
 
 module.exports = function (client) {
   return new Manager({
@@ -15,11 +16,11 @@ module.exports = function (client) {
     },
   })
     .on("nodeConnect", (node) =>
-      console.log(`Node ${node.options.identifier} connected.`)
+      console.log(ChalkAdvanced.green(`Node ${node.options.identifier} connected.`))
     )
     .on("nodeError", (node, error) =>
       console.log(
-        `Node ${node.options.identifier} had an error: ${error.message}.`
+        ChalkAdvanced.red(`Node ${node.options.identifier} had an error: ${error.message}.`)
       )
     );
 };

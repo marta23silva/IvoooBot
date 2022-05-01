@@ -16,4 +16,14 @@ function verifyChannel(interaction, player) {
     return interaction.reply({ embeds: [in_vc] });
 }
 
-module.exports = { shuffle, verifyChannel };
+function isBlank(text) {
+  if(text === "" || text === " " || text === null || text === undefined)
+    return true;
+  return false;
+}
+
+module.exports = { 
+  shuffle,
+  verifyChannel,
+  isBlank,
+};

@@ -9,12 +9,12 @@ const client = new Client({
   ],
 });
 
-
 client.commands = new Collection();
 client.aliases = new Collection();
 client.manager = require("./src/utils/manager")(client);
 
 client.once("ready", () => {
+  console.log(`Logged in as ${client.user.username}#${client.user.discriminator}`);
   console.log("Hello! 🖤");
   client.manager.init(client.user.id);
   client.user.setPresence({

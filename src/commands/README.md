@@ -6,6 +6,7 @@
 | advice | conselho | Ivooo is wise. Ivooo gives the best advice. | /advice (question) |  
 | draw-lots | sorteio | Assigns one item of the first list to another one of the second list. | /draw-lots (1,2,3) (3,2,1) |
 | gif |  | Replies with a gif. | /gif (optional search words) |
+| invite |  | Provides the invitation link. | /invite |
 | minecraft |  | Shows Minecraft server status. | /minecraft (optional server IP) |
 | ping |  | Pong! | /ping |
 | poll | sondagem | Starts a poll. | /poll (title) (description) (1,2,3) |
