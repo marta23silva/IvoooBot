@@ -11,7 +11,9 @@ module.exports = {
     );
 
     if (message.author.bot) return;
-    if (message.mentions.has(message.client.user)) return message.reply(`My prefix is 'Ivooo'.`);
+    if (message.mentions.has(message.client.user) && message.mentions.everyone === false) {
+      return message.reply(`My prefix is 'Ivooo'.`);
+    }
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 
     const tokens = message.content

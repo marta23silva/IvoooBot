@@ -52,6 +52,30 @@ function invite_msg(color, message, url) {
     });
 }
 
+function addedToQueue_msg(color, title, author, length, requester, thumbnail) {
+  return new MessageEmbed()
+    .setColor(color)
+    .setTitle(title)
+    .addFields([
+      {
+        name: "Author",
+        value: `${author}`,
+        inline: true,
+      },
+      {
+        name: "Length",
+        value: `${length}`,
+        inline: true,
+      },
+      {
+        name: "Requester",
+        value: `${requester}`,
+        inline: true,
+      }
+    ])
+    .setThumbnail(thumbnail);
+}
+
 module.exports = {
   error_msg,
   warning_msg,
@@ -59,4 +83,5 @@ module.exports = {
   minecraftServerStatus_msg,
   custom_msg,
   invite_msg,
+  addedToQueue_msg,
 };
