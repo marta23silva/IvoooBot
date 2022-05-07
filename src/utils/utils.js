@@ -34,9 +34,14 @@ function msToHMS(duration) {
   return hours + ":" + minutes + ":" + seconds;
 }
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
 module.exports = { 
   shuffle,
   verifyChannel,
   isBlank,
   msToHMS,
+  getRandomIndex,
 };

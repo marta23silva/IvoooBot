@@ -1,12 +1,7 @@
 const { prefix } = require("../../utils/getPrefix");
-const { NOSReply_pt } = require("../../utils/replies");
 let say = false;
 
 const acceptedCmds = {
-  nos(interaction, alias) {
-    let index = Math.floor(Math.random() * NOSReply_pt.length);
-    return NOSReply_pt[index];
-  },
   dumb(interaction, alias) {
     return "https://tenor.com/bpbwu.gif";
   },
@@ -45,7 +40,7 @@ module.exports = {
     description: "Sends a different reaction based on what you say.",
   },
 
-  aliases: ["dumb", "burro", "good", "say", "nos"],
+  aliases: ["dumb", "burro", "good", "say"],
 
   async execute(interaction, tokens) {
     say = false;
