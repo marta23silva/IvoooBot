@@ -37,7 +37,7 @@ function deploy(guildId) {
       }
     }
   }
-  const rest = new REST({ version: "9" }).setToken(token);
+  const rest = new REST({ version: "10" }).setToken(token);
 
   if(guildId !== null) {
     rest
