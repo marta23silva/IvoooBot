@@ -1,4 +1,5 @@
 const { Client, Intents, Collection } = require("discord.js");
+const { argv } = require('node:process');
 require("dotenv").config();
 
 const client = new Client({
@@ -11,19 +12,10 @@ const client = new Client({
 
 client.commands = new Collection();
 client.aliases = new Collection();
-client.manager = require("./src/utils/manager")(client);
-
-client.once("ready", () => {
-  console.log(`Logged in as ${client.user.username}#${client.user.discriminator}`);
-  console.log("Hello! 🖤");
-  client.manager.init(client.user.id);
-  client.user.setPresence({
-    activities: [{ name: 'hyenas laughing', type: 'LISTENING' }],
-    status: "online",
-  });
-});
-
-client.on("raw", (d) => client.manager.updateVoiceState(d));
+if(argv[2] && argv[2] === "lavalink") {
+  client.manager = require("./src/utils/manager")(client);
+  client.on("raw", (d) => client.manager.updateVoiceState(d));
+}
 
 const { registerCommands, registerEvents } = require("./src/utils/register");
 registerCommands(client, "../commands");

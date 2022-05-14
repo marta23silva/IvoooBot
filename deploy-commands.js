@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const token = process.env.BOT_TOKEN;
 const clientId = process.env.CLIENT_ID;
+deploy(null);
 
 function deploy(guildId) {
   const commands = [];
@@ -36,16 +37,25 @@ function deploy(guildId) {
       }
     }
   }
-
   const rest = new REST({ version: "9" }).setToken(token);
 
-  rest
-    .put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-    .then(() => console.log(ChalkAdvanced.green("Successfully registered application commands.")))
-    .catch((err) => {
-      console.log(ChalkAdvanced.red("Failed to register applications commands"));
-      console.log(err);
-    });
+  if(guildId !== null) {
+    rest
+      .put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
+      .then(() => console.log(ChalkAdvanced.green("[LOCAL] Successfully registered application commands.")))
+      .catch((err) => {
+        console.log(ChalkAdvanced.red("Failed to register applications commands"));
+        console.log(err);
+      });
+  } else {
+    rest
+      .put(Routes.applicationCommands(clientId), { body: commands })
+      .then(() => console.log(ChalkAdvanced.green("[GLOBAL] Successfully registered application commands.")))
+      .catch((err) => {
+        console.log(ChalkAdvanced.red("Failed to register applications commands"));
+        console.log(err);
+      });
+  }
 }
 
 module.exports = { deploy };
