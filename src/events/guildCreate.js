@@ -1,16 +1,20 @@
 const { readFile, writeFile } = require("fs");
+const { deploy } = require("../../deploy-commands");
+const { timestampToDate } = require("../utils/utils");
 
 module.exports = {
   data: {
     name: "guildCreate",
   },
 
-  // still needs to deploy commands automatically when bot joins
   async execute(guild) {
+
     const toAdd = {
       id: guild.id,
+      name: guild.name,
       owner: guild.ownerId,
       prefix: "ivooo",
+      joined: timestampToDate(guild.joinedTimestamp),
     };
 
     readFile(
@@ -32,5 +36,7 @@ module.exports = {
         }
       }
     );
+
+    deploy(guild.id);
   },
 };

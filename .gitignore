@@ -7,9 +7,8 @@ application.yml
 logs/
 
 # Unfinnished code - a mess, really
-src/commands/config
-src/commands/quiz/add-song.txt
-src/commands/text/invite.txt
+src/commands/off-git
+src/commands/not-ready
 data/song.json
 
 # Notes

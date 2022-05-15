@@ -1,26 +1,32 @@
 const { MessageEmbed } = require("discord.js");
-const ivoooTheIcon = "https://raw.githubusercontent.com/marta23silva/IvoooBot/discordjs-update-v13/images/Banzai.png";
-const minecraftThumb = "https://raw.githubusercontent.com/marta23silva/IvoooBot/discordjs-update-v13/images/Minecraft.jpeg";
+const ivoooTheIcon = "https://github.com/marta23silva/IvoooBot/blob/master/images/Banzai.png?raw=true";
+const minecraftThumb = "https://github.com/marta23silva/IvoooBot/blob/master/images/Minecraft.jpeg?raw=true";
 
 function error_msg(message) {
-  return new MessageEmbed().setColor("e30808").setAuthor({
-    name: `${message}`,
-    iconURL: `${ivoooTheIcon}`,
-  });
+  return new MessageEmbed()
+    .setColor("e30808")
+    .setAuthor({
+      name: `${message}`,
+      iconURL: `${ivoooTheIcon}`,
+    });
 }
 
 function warning_msg(message) {
-  return new MessageEmbed().setColor("#FFFF00").setAuthor({
-    name: `${message}`,
-    iconURL: `${ivoooTheIcon}`,
-  });
+  return new MessageEmbed()
+    .setColor("#FFFF00")
+    .setAuthor({
+      name: `${message}`,
+      iconURL: `${ivoooTheIcon}`,
+    });
 }
 
 function success_msg(message) {
-  return new MessageEmbed().setColor("29dd00").setAuthor({
-    name: `${message}`,
-    iconURL: `${ivoooTheIcon}`,
-  });
+  return new MessageEmbed()
+    .setColor("29dd00")
+    .setAuthor({
+      name: `${message}`,
+      iconURL: `${ivoooTheIcon}`,
+    });
 }
 
 function minecraftServerStatus_msg(color, message, description) {
