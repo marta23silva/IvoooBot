@@ -1,8 +1,9 @@
-const { prefix } = require("../../utils/getPrefix");
+const { getPrefix } = require("../../utils/utils");
+const file = require("../../../data/guilds.json");
 let say = false;
 
 const acceptedCmds = {
-  dumb(interaction, alias) {
+  dumb() {
     return "https://tenor.com/bpbwu.gif";
   },
   good(interaction, alias) {
@@ -13,6 +14,7 @@ const acceptedCmds = {
       interaction.react("😁");
       return "https://tenor.com/bd6ds.gif";
     } else {
+      interaction.react("🤭");
       return "https://tenor.com/KdfT.gif";
     }
   },
@@ -29,7 +31,7 @@ const acceptedCmds = {
       return alias.join(" ");
     }
   },
-  react(interaction, alias) {
+  react() {
     return "https://tenor.com/3cjA.gif";
   },
 };
@@ -42,11 +44,12 @@ module.exports = {
 
   aliases: ["dumb", "burro", "good", "say"],
 
-  async execute(interaction, tokens) {
+  async execute(interaction) {
     say = false;
     const channel = interaction.client.channels.cache.get(
       interaction.channelId
     );
+    const prefix = getPrefix(interaction.guildId, file);
     const alias = interaction.content.slice(prefix.length).trim().split(/ +/g);
     if (alias[0] === "burro") {
       alias[0] = "dumb";
@@ -56,6 +59,6 @@ module.exports = {
     if (say === true) {
       return channel.send(msg);
     }
-    return interaction.reply(msg);
+    return channel.send(msg);
   },
 };

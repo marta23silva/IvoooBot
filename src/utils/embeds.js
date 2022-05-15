@@ -29,6 +29,15 @@ function success_msg(message) {
     });
 }
 
+function customColor_msg(color, message) {
+  return new MessageEmbed()
+    .setColor(color)
+    .setAuthor({
+      name: `${message}`,
+      iconURL: `${ivoooTheIcon}`,
+    });
+}
+
 function minecraftServerStatus_msg(color, message, description) {
   return new MessageEmbed()
     .setColor(color)
@@ -86,6 +95,7 @@ module.exports = {
   error_msg,
   warning_msg,
   success_msg,
+  customColor_msg,
   minecraftServerStatus_msg,
   custom_msg,
   invite_msg,

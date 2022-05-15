@@ -1,4 +1,6 @@
-const { prefix } = require("../utils/getPrefix");
+const { getPrefix } = require("../utils/utils");
+const file = require("../../data/guilds.json");
+const { customColor_msg } = require("../utils/embeds");
 
 module.exports = {
   data: {
@@ -11,8 +13,14 @@ module.exports = {
     );
 
     if (message.author.bot) return;
-    if (message.mentions.has(message.client.user) && message.mentions.everyone === false) {
-      return message.reply(`My prefix is 'Ivooo'.`);
+
+    const prefix = getPrefix(message.guildId, file);
+    if (message.mentions.has(message.client.user) && !message.mentions.everyone) {
+      const prefixDisplay = customColor_msg(
+        message.guild.me.displayHexColor,
+        `My prefix is ${prefix}`
+      );
+      return message.reply({ embeds: [prefixDisplay] });
     }
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 

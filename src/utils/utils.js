@@ -49,6 +49,19 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function getPrefix(guildId, file) {
+  let index = -1;
+  for(let i = 0; i < file.guilds.length; i++) {
+    if(guildId === file.guilds[i].id) {
+      index = i;
+      break;
+    }
+  }
+  if(index > -1)
+    return file.guilds[index].prefix;
+  return "ivooo";
+}
+
 module.exports = { 
   shuffle,
   verifyChannel,
@@ -56,4 +69,5 @@ module.exports = {
   msToHMS,
   timestampToDate,
   getRandomIndex,
+  getPrefix,
 };

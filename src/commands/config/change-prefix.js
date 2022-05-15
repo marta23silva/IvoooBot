@@ -23,15 +23,14 @@ module.exports = {
 
   aliases: [],
 
-  // add condition so only server owner can change prefix
-  // the prefix change is working but I still need to get the prefix from the json file to be able to use it
+  // TODO - add condition so only server owner can change prefix
   async execute(interaction) {
 
     if(!interaction.options) {
       return interaction.reply({ embeds: [slashcmd_msg] });
     }
 
-    let index;
+    let index = -1;
     for(let i = 0; i < file.guilds.length; i++) {
       if(interaction.guildId === file.guilds[i].id) {
         console.log("Prefix before changing: " + file.guilds[i].prefix);
@@ -40,7 +39,7 @@ module.exports = {
       }
     }
 
-    if(!index) {
+    if(index < 0) {
       return interaction.reply({ embeds: [noIndex_msg] });
     }
 
