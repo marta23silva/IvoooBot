@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { error_msg, custom_msg } = require("../../utils/embeds");
+const { emojiNumbers } = require('../../utils/utils');
 
 const slashcmd_msg = error_msg(
   `You have to use the slash command to use "poll".`
@@ -7,7 +8,6 @@ const slashcmd_msg = error_msg(
 const length_msg = error_msg(
   `You exceeded the max of items on the poll, which is 10.`
 );
-const emojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -52,7 +52,7 @@ module.exports = {
 
     options.push(dscrpt);
     for (let i = 0; i < items.length; i++) {
-      options.push(emojis[i] + " - " + items[i]);
+      options.push(emojiNumbers[i] + " - " + items[i]);
     }
 
     const response = custom_msg(color, title, options.join("\n\n"));
@@ -62,7 +62,7 @@ module.exports = {
         fetchReply: true,
       });
       for (let i = 0; i < items.length; i++) {
-        message.react(emojis[i]);
+        message.react(emojiNumbers[i]);
       }
     } catch (err) {
       return interaction.reply(

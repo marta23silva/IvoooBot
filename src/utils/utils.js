@@ -1,5 +1,7 @@
 const { warning_msg } = require("./embeds");
 
+const emojiNumbers = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
+
 const in_vc = warning_msg(
   `I'm already in a different voice channel. Trying to kidnap me to another one?`
 );
@@ -62,7 +64,17 @@ function getPrefix(guildId, file) {
   return "ivooo";
 }
 
+function getCorrectAnswerNumber(array, answer) {
+  for(let i = 0; i < array.length; i++) {
+    if(array[i] === answer) {
+      return i+1;
+    }
+  }
+  return null;
+}
+
 module.exports = { 
+  emojiNumbers,
   shuffle,
   verifyChannel,
   isBlank,
@@ -70,4 +82,5 @@ module.exports = {
   timestampToDate,
   getRandomIndex,
   getPrefix,
+  getCorrectAnswerNumber,
 };

@@ -91,6 +91,29 @@ function addedToQueue_msg(color, title, author, length, requester, thumbnail) {
     .setThumbnail(thumbnail);
 }
 
+function quizResult_msg(color, description, footer) {
+  let title;
+  if(color === "29dd00") {
+    title = "Correct!"
+    description = "**You selected:** " + description;
+  } else {
+    title = "Wrong!"
+    description = "**The correct answer was:** " + description;
+  }
+  return new MessageEmbed()
+    .setColor(color)
+    .setTitle(title)
+    .setDescription(description)
+    .setAuthor({
+      name: `Ivooo`,
+      iconURL: `${ivoooTheIcon}`,
+    })
+    .setFooter({
+      text: `${footer}`
+    })
+    .setTimestamp();
+}
+
 module.exports = {
   error_msg,
   warning_msg,
@@ -100,4 +123,5 @@ module.exports = {
   custom_msg,
   invite_msg,
   addedToQueue_msg,
+  quizResult_msg,
 };
