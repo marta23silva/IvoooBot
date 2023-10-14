@@ -3,8 +3,8 @@ const { verifyChannel } = require("../util/utils");
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("resume")
-        .setDescription(`Resumes the current song.`),
+        .setName("stop")
+        .setDescription(`Stops the current song and clears the queue.`),
 
     async execute(interaction) {
 
@@ -13,10 +13,8 @@ module.exports = {
 
         if (verifyChannel(interaction, player)) return;
         
-        if(player.paused) {
-            player.pause(false);
-            return interaction.reply(':arrow_forward: Resumed.');
-		}
-        return interaction.reply('???');
+        player.queue.clear();
+        player.stop();
+        return interaction.reply(':stop_button: Stopped.');
     },
 };
