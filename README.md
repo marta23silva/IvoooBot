@@ -7,16 +7,11 @@
 > This bot is not being hosted yet. More info on the commands available on `src/commands`.
 
 ## Dependencies:
-[![](https://img.shields.io/badge/discord.js-13.6.0-blue.svg?logo=npm)](https://www.npmjs.com/package/discord.js)
-[![](https://img.shields.io/badge/minecraft--server--util-5.2.9-green?logo=npm)](https://www.npmjs.com/package/minecraft-server-util)
-[![](https://img.shields.io/badge/node--fetch-2.6.1-yellow?logo=npm)](https://www.npmjs.com/package/node-fetch)
-[![](https://img.shields.io/badge/dotenv-10.0.0-orange?logo=npm)](https://www.npmjs.com/package/dotenv)
-[![](https://img.shields.io/badge/fs-0.0.1--security-9cf?logo=npm)](https://www.npmjs.com/package/fs)
-[![](https://img.shields.io/badge/nodemon-2.0.15-lightgrey?logo=npm)](https://www.npmjs.com/package/nodemon)
-[![](https://img.shields.io/badge/Lavalink-3.4-ff69b4?logo=github)](https://github.com/freyacodes/Lavalink)
-[![](https://img.shields.io/badge/erela.js-2.3.3-success?logo=npm)](https://www.npmjs.com/package/erela.js)
-[![](https://img.shields.io/badge/pokedev.js-1.1.4-critical?logo=npm)](https://www.npmjs.com/package/pokedev.js)
-[![](https://img.shields.io/badge/skylander.js-1.0.4-blue?logo=npm)](https://www.npmjs.com/package/skylander.js)
+[![](https://img.shields.io/badge/discord.js-14.13.0-blue.svg?logo=npm)](https://www.npmjs.com/package/discord.js)
+[![](https://img.shields.io/badge/dotenv-16.3.1-orange?logo=npm)](https://www.npmjs.com/package/dotenv)
+[![](https://img.shields.io/badge/nodemon-3.0.1-lightgrey?logo=npm)](https://www.npmjs.com/package/nodemon)
+[![](https://img.shields.io/badge/Lavalink-ff69b4?logo=github)](https://github.com/freyacodes/Lavalink)
+[![](https://img.shields.io/badge/erela.js-2.4.0-success?logo=npm)](https://www.npmjs.com/package/erela.js)
 
 ## How to use this code on your bot:
 
@@ -31,19 +26,19 @@
 * Download the latest version of [Lavalink](https://github.com/freyacodes/Lavalink/releases). Put an [`application.yml`](https://github.com/freyacodes/Lavalink/blob/master/LavalinkServer/application.yml.example) file in the same directory.
 * Create a `.env` file and complete it with your info:
 ```
-BOT_TOKEN=
-CLIENT_ID=
-INVITE_LINK=
-
-OWNER_ID=
-TENOR_KEY=
+TOKEN=
+GUILD_ID=
+STATUS=
+STATUSBOT=
+DISCORDSTATUS=
 LAVALINK_PASSWORD=
 ```
-You can get a bot Token and a Client ID on the [Discord Developer Portal](https://discord.com/developers/applications). The Owner ID should be your Discord ID. The Lavalink password is defined on the `application.yml` file. <br/>
-The default prefix is `ivooo`, but you can change this in `src/utils/getPrefix.js`.
+You can get a bot TOKEN on the [Discord Developer Portal](https://discord.com/developers/applications). The GUILD_ID should be your server's id, in case you want to deploy the commands locally.
+STATUS is either DEVELOPMENT (deploy commands in your server of choice) or PRODUCTION (deploying slash commands for all servers). The options for STATUSBOT are online, offline, dnd and away.
+The LAVALINK_PASSWORD is defined on the `application.yml` file.
 
 ### How to run 🛸
-* Open a terminal/cmd window and run `npm run lavalink` to start your Lavalink server (only needed when using voice commands).
+* Open a terminal/cmd window and run `npm run lava` to start your Lavalink server (only needed when using voice commands).
 * Open a terminal/cmd window and run `npm run start` to start your bot.
 
 ## Acknowledgements
@@ -54,8 +49,6 @@ Very nice and useful resources that help me **a whole lot**:
 * [Filipe Deschamps](https://www.youtube.com/c/FilipeDeschamps)
 
 ## Contributors
-
-- Bot Contributors
  
 ![image](https://contrib.rocks/image?repo=marta23silva/IvoooBot)
 

@@ -1,40 +1,29 @@
-const { getPrefix } = require("../utils/utils");
-const file = require("../../data/guilds.json");
-const { customColor_msg } = require("../utils/embeds");
 
-module.exports = {
-  data: {
-    name: "messageCreate",
-  },
+module.exports = (client, message) => {
+    
+    console.log(message.author.username + " said: " + message.content);
+    
+    // if (message.author.bot) return;
 
-  async execute(message) {
-    console.log(
-      message.author.username + " said: " + message.content
-    );
+    // const prefix = "bkg"; // getPrefix(); TODO
+    // if (message.mentions.has(client.user) && !message.mentions.everyone) {
+    //     const file = new AttachmentBuilder(PATH_IMG_BKG_MOM);
+    //     const prefixDisplay = new EmbedBuilder()
+    //         .setColor(HEXCODE_BLACK)
+    //         .setAuthor({
+    //             name: MSG_PING
+    //         })
+    //         .setDescription(`My prefix is: ${prefix}`)
+    //         .setThumbnail('attachment://bkgWithMom.jpg');
+    //     return message.reply({ embeds: [prefixDisplay], files: [file] });
+    // }
+    // if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-    if (message.author.bot) return;
-
-    const prefix = getPrefix(message.guildId, file);
-    if (message.mentions.has(message.client.user) && !message.mentions.everyone) {
-      const prefixDisplay = customColor_msg(
-        message.guild.me.displayHexColor,
-        `My prefix is ${prefix}`
-      );
-      return message.reply({ embeds: [prefixDisplay] });
-    }
-    if (!message.content.toLowerCase().startsWith(prefix)) return;
-
-    const tokens = message.content
-      .slice(prefix.length)
-      .trim()
-      .split(/ +/g);
-    const command = tokens.shift().toLowerCase();
-
-    const loaded =
-      message.client.commands.get(command) ||
-      message.client.aliases.get(command);
-    if (!loaded) return;
-
-    loaded.execute(message, tokens);
-  },
+    // const tokens = message.content.slice(prefix.length).trim().split(/ +/g);
+    // const command = tokens.shift().toLowerCase();
+    // const loadedCmd = client.commands.get(command);
+    
+    // if (!loadedCmd) return;
+    // loadedCmd.execute(message, tokens);
 };
+  
