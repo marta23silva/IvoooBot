@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { verifyChannel, msToHMS } = require("../util/utils");
 const { error_msg, addedToQueue_msg } = require("../util/embeds");
-const { COLOUR_GREEN } = require("../util/constants");
 
 module.exports = {
     data: new SlashCommandBuilder()

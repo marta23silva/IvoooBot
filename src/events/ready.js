@@ -1,3 +1,4 @@
+const { ActivityType } = require('discord.js');
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const { readdirSync } = require("fs");
@@ -45,7 +46,7 @@ module.exports = async (client) => {
   })();
 
   client.user.setPresence({
-    activities: [{ name: process.env.STATUSBOT, type: 'LISTENING' }],
+    activities: [{ name: process.env.STATUSBOT, type: ActivityType.Listening }],
     status: `${process.env.DISCORDSTATUS}`,
   });
   
