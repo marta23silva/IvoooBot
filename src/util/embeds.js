@@ -76,18 +76,19 @@ function genshinCharacter_msg(character) {
   const region = character.region === '' ? ' ' : character.region;
   const title = character.title === '' ? ' ' : character.title;
   const affiliation = character.affiliation === '' ? ' ' : character.affiliation;
-  /*let image = character.images.mihoyo_icon;
+  
+  let image = character.images.mihoyo_icon;
   if (typeof character.images.mihoyo_icon === 'undefined')
-    image = character.images.mihoyo_sideIcon; */
+    image = character.images.mihoyo_sideIcon;
 
   return new EmbedBuilder()
     .setColor(colour)
     .setAuthor({ name: character.name, iconURL: character.images.mihoyo_sideIcon })
     .setDescription(character.description)
     .addFields(
-      { name: 'Element', value: character.elementType, inline: true },
+      { name: 'Element', value: character.elementText, inline: true },
       { name: 'Rarity', value: character.rarity + ' star', inline: true },
-      { name: 'Weapon', value: character.weaponType, inline: true },
+      { name: 'Weapon', value: character.weaponText, inline: true },
       { name: ' ', value: ' ', inline: false },
       { name: 'Gender', value: character.gender, inline: true },
       { name: 'Birthday', value: birthday, inline: true },
@@ -97,7 +98,7 @@ function genshinCharacter_msg(character) {
       { name: 'Affiliation', value: affiliation, inline: true },
       { name: 'Constellation', value: character.constellation, inline: true },
     )
-    .setImage(character.images.mihoyo_icon)
+    .setImage(image)
 }
 
 module.exports = {
