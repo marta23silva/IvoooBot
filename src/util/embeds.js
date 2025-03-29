@@ -77,7 +77,7 @@ function genshinCharacter_msg(character) {
   const title = character.title === '' ? ' ' : character.title;
   const affiliation = character.affiliation === '' ? ' ' : character.affiliation;
   
-  let image = character.images.mihoyo_icon;
+  let image = character.images.cover1;
   if (typeof character.images.mihoyo_icon === 'undefined')
     image = character.images.mihoyo_sideIcon;
 
@@ -101,9 +101,56 @@ function genshinCharacter_msg(character) {
     .setImage(image)
 }
 
+function wuwaCharacter_msg(character) {
+  let colour = '';
+  switch(character.attribute) {
+    case 'Fusion':
+      colour = c.WUWA_FUSION_COLOUR;
+      break;
+    case 'Glacio':
+      colour = c.WUWA_GLACIO_COLOUR;
+      break;
+    case 'Aero':
+      colour = c.WUWA_AERO_COLOUR;
+      break;
+    case 'Electro':
+      colour = c.WUWA_ELECTRO_COLOUR;
+      break;
+    case 'Spectro':
+      colour = c.WUWA_SPECTRO_COLOUR;
+      break;
+    case 'Havoc':
+      colour = c.WUWA_HAVOC_COLOUR;
+      break;
+    default:
+      colour = "000000";
+      break;
+  }
+
+  return new EmbedBuilder()
+    .setColor(colour)
+    .setAuthor({ name: character.name.en, iconURL: character.images.icon })
+    .setDescription(character.quote)
+    .addFields(
+      { name: 'Attribute', value: character.attribute, inline: true },
+      { name: 'Rarity', value: character.rarity + ' star', inline: true },
+      { name: 'Weapon', value: character.weapon, inline: true },
+      { name: ' ', value: ' ', inline: false },
+      { name: 'Gender', value: character.gender, inline: true },
+      { name: 'Birthday', value: character.birthday, inline: true },
+      { name: 'Region', value: character.nation, inline: true },
+      { name: ' ', value: ' ', inline: false },
+      { name: 'Title', value: character.title, inline: true },
+      { name: 'Affiliation', value: character.affiliations[0], inline: true },
+      { name: 'Release Date', value: character.releaseDate, inline: true },
+    )
+    .setImage(character.images.characterSheet)
+}
+
 module.exports = {
   warning_msg,
   error_msg,
   addedToQueue_msg,
   genshinCharacter_msg,
+  wuwaCharacter_msg,
 };
