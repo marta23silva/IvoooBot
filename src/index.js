@@ -1,20 +1,9 @@
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
-require('dotenv').config();
+import { Client, Collection, GatewayIntentBits } from 'discord.js';
+import { config } from './config/envLoader.js';
+import { eventLoader } from './utils/index.js';
 
-console.clear();
-
-const client = new Client({
-    intents: [
-      GatewayIntentBits.Guilds,
-      GatewayIntentBits.GuildMessages,
-      GatewayIntentBits.MessageContent,
-      GatewayIntentBits.GuildVoiceStates,
-    ],
-    partials: ['MESSAGE', 'CHANNEL']
-});
-
-require('./util/eventLoader')(client);
+const client = new Client({ intents: [ GatewayIntentBits.Guilds ] });
 client.commands = new Collection();
-client.manager = require("./util/erelaManager")(client);
-client.on("raw", (d) => client.manager.updateVoiceState(d));
-client.login(process.env.TOKEN);
+eventLoader(client);
+
+client.login(config.botToken);

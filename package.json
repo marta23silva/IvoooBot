@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "ivooo discord bot",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
