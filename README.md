@@ -1,7 +1,9 @@
-<h1 align="center">Ivooo – Discord Bot</h1>
-<br/>
+<div align="center">
+  <img src="https://github.com/marta23silva/IvoooBot/blob/master/images/Banzai.png" width="100"/>
+  <h1 style="display: inline-block; vertical-align: middle;">Ivooo – Discord Bot</h1>
+</div>
 
-> Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org) by [Marta Silva](https://github.com/marta23silva). <br/>
+> Ivooo is a Discord bot coded in javascript with [discord.js](https://discord.js.org), by [Marta Silva](https://github.com/marta23silva). <br/>
 > This bot is not being hosted yet. More info on the commands available on `src/commands`.
 
 ## Dependencies:
