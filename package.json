@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
-    "lava": "java -jar Lavalink.jar"
+    "lava": "java -jar Lavalink.jar",
+    "deploycommands": "node ./src/utils/deployCommands.js"
   },
   "keywords": [
     "discord bot",
