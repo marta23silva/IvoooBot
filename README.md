@@ -27,14 +27,15 @@
 * Create a `.env` file and complete it with your info:
 ```
 TOKEN=
+CLIENT_ID=
 GUILD_ID=
 STATUS=
 STATUSBOT=
 DISCORDSTATUS=
 LAVALINK_PASSWORD=
 ```
-You can get a bot TOKEN on the [Discord Developer Portal](https://discord.com/developers/applications). The GUILD_ID should be your server's id, in case you want to deploy the commands locally.
-STATUS is either DEVELOPMENT (deploy commands in your server of choice) or PRODUCTION (deploying slash commands for all servers). The options for STATUSBOT are online, offline, dnd and away.
+You can get a bot TOKEN and CLIENT_ID on the [Discord Developer Portal](https://discord.com/developers/applications). The GUILD_ID should be your server's id, in case you want to deploy the commands locally.
+STATUS is either DEV (deploy commands in your server of choice) or PRD (deploying slash commands for all servers). The options for STATUSBOT are online, offline, dnd and away.
 The LAVALINK_PASSWORD is defined on the `application.yml` file.
 
 ### How to run 🛸

@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const TOKEN = process.env.TOKEN;
+const CLIENT_ID = process.env.CLIENT_ID;
 const GUILD_ID = process.env.GUILD_ID;
 const STATUS = process.env.STATUS;
 const STATUSBOT = process.env.STATUSBOT;
@@ -14,7 +15,8 @@ if (!TOKEN) {
 
 export const config = {
   botToken: TOKEN,
-  guildId: GUILD_ID,
+  clientId: CLIENT_ID,
+  serverId: GUILD_ID,
   devStatus: STATUS,
   botStatus: STATUSBOT,
   discordStatus: DISCORDSTATUS,

@@ -1,5 +1,5 @@
 import { Events, ActivityType } from 'discord.js';
-import { config } from '../config/envLoader.js';
+import { config } from '../config/env.js';
 
 export default {
 	name: Events.ClientReady,
