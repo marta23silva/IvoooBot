@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import { config } from './config/env.js';
 import { eventLoader, registerCommands } from './utils/index.js';
 
