@@ -1,7 +1,7 @@
 import { Routes } from 'discord-api-types/v9';
 import { readdir } from 'fs';
 import { REST } from '@discordjs/rest';
-import { config } from '../config/envLoader.js'
+import { config } from '../config/env.js'
 import { ChalkAdvanced } from 'chalk-advanced';
 
 readdir('./src/commands/', async (err, files) => {
